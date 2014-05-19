@@ -1,0 +1,881 @@
+[2014-02-19 09:01:55] log.ERROR: exception 'Illuminate\Session\TokenMismatchException' in /var/www/arp_dev/app/filters.php:116
+Stack trace:
+#0 [internal function]: {closure}(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#1 /var/www/arp_dev/bootstrap/compiled.php(7853): call_user_func_array(Object(Closure), Array)
+#2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(262): Illuminate\Routing\Route->callFilter('csrf', Object(Illuminate\Http\Request), Array)
+#3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(185): Illuminate\Routing\Controllers\Controller->callFilter(Object(Illuminate\Routing\Route), 'csrf', Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(109): Illuminate\Routing\Controllers\Controller->callBeforeFilters(Object(Illuminate\Routing\Router), 'postSignin')
+#5 /var/www/arp_dev/bootstrap/compiled.php(4751): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'postSignin', Array)
+#6 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#7 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#8 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#9 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#13 {main} [] []
+[2014-02-19 09:02:05] log.ERROR: exception 'Illuminate\Session\TokenMismatchException' in /var/www/arp_dev/app/filters.php:116
+Stack trace:
+#0 [internal function]: {closure}(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#1 /var/www/arp_dev/bootstrap/compiled.php(7853): call_user_func_array(Object(Closure), Array)
+#2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(262): Illuminate\Routing\Route->callFilter('csrf', Object(Illuminate\Http\Request), Array)
+#3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(185): Illuminate\Routing\Controllers\Controller->callFilter(Object(Illuminate\Routing\Route), 'csrf', Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(109): Illuminate\Routing\Controllers\Controller->callBeforeFilters(Object(Illuminate\Routing\Router), 'postSignin')
+#5 /var/www/arp_dev/bootstrap/compiled.php(4751): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'postSignin', Array)
+#6 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#7 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#8 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#9 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#11 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#12 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#13 {main} [] []
+[2014-02-19 09:22:19] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected 'endforeach' (T_ENDFOREACH)' in /var/www/arp_dev/app/storage/views/9f0ae08665d893b127b51a0a00f3727b:62
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-02-19 09:28:33] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /var/www/arp_dev/app/storage/views/0999f1a15f28a00b71574038e896c07c:186
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2014-02-19 10:22:32] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 10:27:11] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 10:27:13] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 10:37:27] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 10:38:17] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 10:40:13] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 10:42:09] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 10:43:08] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 10:46:52] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 10:58:39] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:49] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:49] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:49] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:49] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:49] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:49] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:49] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:50] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:50] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:50] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:50] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:50] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:50] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:50] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:15:57] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:18:17] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 11:18:33] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 11:18:54] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:19:47] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:21:15] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:27:45] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:35:16] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:35:16] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:35:16] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:35:16] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:35:16] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:35:16] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:36:25] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:37:43] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 11:37:54] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:40:13] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:40:17] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:35] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:38] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:41:39] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:44:46] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 11:45:11] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:45:32] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 11:45:52] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:51:13] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-19 11:51:17] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:57:06] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 11:59:30] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InternalinvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-19 12:21:31] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 12:23:01] log.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::hasGroups()' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:1658 Stack trace: #0 [internal function]: Illuminate\Database\Query\Builder->__call('hasGroups', Array) #1 [internal function]: Illuminate\Database\Query\Builder->hasGroups(1) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(786): call_user_func_array(Array, Array) #3 [internal function]: Illuminate\Database\Eloquent\Builder->__call('hasGroups', Array) #4 [internal function]: Illuminate\Database\Eloquent\Builder->hasGroups(1) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2653): call_user_func_array(Array, Array) #6 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Illuminate\Database\Eloquent\Model->__call('hasGroups', Array) #7 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Cartalyst\Sentry\Groups\Eloquent\Group->hasGroups(1) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #13 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #19 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #20 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #21 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #22 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #23 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #24 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #25 {main} [] []
+[2014-02-19 12:23:09] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 12:23:13] log.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::hasGroups()' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:1658 Stack trace: #0 [internal function]: Illuminate\Database\Query\Builder->__call('hasGroups', Array) #1 [internal function]: Illuminate\Database\Query\Builder->hasGroups(1) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(786): call_user_func_array(Array, Array) #3 [internal function]: Illuminate\Database\Eloquent\Builder->__call('hasGroups', Array) #4 [internal function]: Illuminate\Database\Eloquent\Builder->hasGroups(1) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2653): call_user_func_array(Array, Array) #6 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Illuminate\Database\Eloquent\Model->__call('hasGroups', Array) #7 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Cartalyst\Sentry\Groups\Eloquent\Group->hasGroups(1) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #13 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #19 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #20 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #21 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #22 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #23 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #24 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #25 {main} [] []
+[2014-02-19 12:23:20] log.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::hasGroups()' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:1658 Stack trace: #0 [internal function]: Illuminate\Database\Query\Builder->__call('hasGroups', Array) #1 [internal function]: Illuminate\Database\Query\Builder->hasGroups(1) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(786): call_user_func_array(Array, Array) #3 [internal function]: Illuminate\Database\Eloquent\Builder->__call('hasGroups', Array) #4 [internal function]: Illuminate\Database\Eloquent\Builder->hasGroups(1) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2653): call_user_func_array(Array, Array) #6 /var/www/arp_dev/app/storage/views/0b09573c9d8dd4bce9b8a18d5e3d9be8(36): Illuminate\Database\Eloquent\Model->__call('hasGroups', Array) #7 /var/www/arp_dev/app/storage/views/0b09573c9d8dd4bce9b8a18d5e3d9be8(36): Cartalyst\Sentry\Groups\Eloquent\Group->hasGroups(1) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #13 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #19 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #20 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #21 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #22 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #23 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #24 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #25 {main} [] []
+[2014-02-19 12:27:15] log.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::hasGroups()' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:1658 Stack trace: #0 [internal function]: Illuminate\Database\Query\Builder->__call('hasGroups', Array) #1 [internal function]: Illuminate\Database\Query\Builder->hasGroups(1) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(786): call_user_func_array(Array, Array) #3 [internal function]: Illuminate\Database\Eloquent\Builder->__call('hasGroups', Array) #4 [internal function]: Illuminate\Database\Eloquent\Builder->hasGroups(1) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2653): call_user_func_array(Array, Array) #6 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Illuminate\Database\Eloquent\Model->__call('hasGroups', Array) #7 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Cartalyst\Sentry\Groups\Eloquent\Group->hasGroups(1) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #13 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #19 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #20 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #21 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #22 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #23 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #24 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #25 {main} [] []
+[2014-02-19 12:28:28] log.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::hasGroups()' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:1658 Stack trace: #0 [internal function]: Illuminate\Database\Query\Builder->__call('hasGroups', Array) #1 [internal function]: Illuminate\Database\Query\Builder->hasGroups(1) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(786): call_user_func_array(Array, Array) #3 [internal function]: Illuminate\Database\Eloquent\Builder->__call('hasGroups', Array) #4 [internal function]: Illuminate\Database\Eloquent\Builder->hasGroups(1) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2653): call_user_func_array(Array, Array) #6 /var/www/arp_dev/app/storage/views/0b09573c9d8dd4bce9b8a18d5e3d9be8(36): Illuminate\Database\Eloquent\Model->__call('hasGroups', Array) #7 /var/www/arp_dev/app/storage/views/0b09573c9d8dd4bce9b8a18d5e3d9be8(36): Cartalyst\Sentry\Groups\Eloquent\Group->hasGroups(1) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #13 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #19 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #20 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #21 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #22 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #23 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #24 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #25 {main} [] []
+[2014-02-19 12:30:37] log.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::hasGroups()' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:1658 Stack trace: #0 [internal function]: Illuminate\Database\Query\Builder->__call('hasGroups', Array) #1 [internal function]: Illuminate\Database\Query\Builder->hasGroups(1) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(786): call_user_func_array(Array, Array) #3 [internal function]: Illuminate\Database\Eloquent\Builder->__call('hasGroups', Array) #4 [internal function]: Illuminate\Database\Eloquent\Builder->hasGroups(1) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2653): call_user_func_array(Array, Array) #6 /var/www/arp_dev/app/storage/views/0b09573c9d8dd4bce9b8a18d5e3d9be8(36): Illuminate\Database\Eloquent\Model->__call('hasGroups', Array) #7 /var/www/arp_dev/app/storage/views/0b09573c9d8dd4bce9b8a18d5e3d9be8(36): Cartalyst\Sentry\Groups\Eloquent\Group->hasGroups(1) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #13 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #19 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #20 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #21 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #22 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #23 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #24 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #25 {main} [] []
+[2014-02-19 12:31:02] log.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::hasGroups()' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:1658 Stack trace: #0 [internal function]: Illuminate\Database\Query\Builder->__call('hasGroups', Array) #1 [internal function]: Illuminate\Database\Query\Builder->hasGroups(1) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(786): call_user_func_array(Array, Array) #3 [internal function]: Illuminate\Database\Eloquent\Builder->__call('hasGroups', Array) #4 [internal function]: Illuminate\Database\Eloquent\Builder->hasGroups(1) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2653): call_user_func_array(Array, Array) #6 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Illuminate\Database\Eloquent\Model->__call('hasGroups', Array) #7 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Cartalyst\Sentry\Groups\Eloquent\Group->hasGroups(1) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #13 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #19 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #20 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #21 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #22 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #23 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #24 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #25 {main} [] []
+[2014-02-19 12:31:42] log.ERROR: exception 'BadMethodCallException' with message 'Call to undefined method Illuminate\Database\Query\Builder::hasGroups()' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php:1658 Stack trace: #0 [internal function]: Illuminate\Database\Query\Builder->__call('hasGroups', Array) #1 [internal function]: Illuminate\Database\Query\Builder->hasGroups(1) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(786): call_user_func_array(Array, Array) #3 [internal function]: Illuminate\Database\Eloquent\Builder->__call('hasGroups', Array) #4 [internal function]: Illuminate\Database\Eloquent\Builder->hasGroups(1) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(2653): call_user_func_array(Array, Array) #6 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Illuminate\Database\Eloquent\Model->__call('hasGroups', Array) #7 /var/www/arp_dev/app/storage/views/67d860ec5286295336beef467bd5e681(43): Cartalyst\Sentry\Groups\Eloquent\Group->hasGroups(1) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #13 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #18 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #19 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #20 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #21 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #22 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #23 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #24 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #25 {main} [] []
+[2014-02-19 12:42:13] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 12:53:54] log.ERROR: exception 'Symfony\Component\Routing\Exception\RouteNotFoundException' with message 'Unable to generate a URL for the named route "create/internalinvoice" as such route does not exist.' in /var/www/arp_dev/vendor/symfony/routing/Symfony/Component/Routing/Generator/UrlGenerator.php:134 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php(192): Symfony\Component\Routing\Generator\UrlGenerator->generate('create/internal...', Array, true) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Support/helpers.php(696): Illuminate\Routing\UrlGenerator->route('create/internal...', Array, true) #2 /var/www/arp_dev/app/storage/views/9592e64a6898d4321d15d42f385ef04b(15): route('create/internal...') #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php(38): include('/var/www/arp_de...') #4 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Engines/CompilerEngine.php(45): Illuminate\View\Engines\PhpEngine->evaluatePath('/var/www/arp_de...', Array) #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(100): Illuminate\View\Engines\CompilerEngine->get('/var/www/arp_de...', Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/View.php(81): Illuminate\View\View->getContents() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Http/Response.php(70): Illuminate\View\View->render() #8 /var/www/arp_dev/vendor/symfony/http-foundation/Symfony/Component/HttpFoundation/Response.php(141): Illuminate\Http\Response->setContent(Object(Illuminate\View\View)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1414): Symfony\Component\HttpFoundation\Response->__construct(Object(Illuminate\View\View)) #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(156): Illuminate\Routing\Router->prepare(Object(Illuminate\View\View), Object(Illuminate\Http\Request)) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(126): Illuminate\Routing\Controllers\Controller->processResponse(Object(Illuminate\Routing\Router), 'getIndex', Object(Illuminate\View\View)) #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #13 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #17 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #18 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #19 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #20 {main} [] []
+[2014-02-19 12:57:48] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 13:16:59] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 13:26:58] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\ReportController does not exist' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php:308 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(308): ReflectionClass->__construct('Controllers\Adm...') #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(250): Illuminate\Container\Container->build('Controllers\Adm...', Array) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(480): Illuminate\Container\Container->make('Controllers\Adm...', Array) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(983): Illuminate\Foundation\Application->make('Controllers\Adm...') #4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #11 {main} [] []
+[2014-02-19 13:27:36] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\ReportController does not exist' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php:308 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(308): ReflectionClass->__construct('Controllers\Adm...') #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(250): Illuminate\Container\Container->build('Controllers\Adm...', Array) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(480): Illuminate\Container\Container->make('Controllers\Adm...', Array) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(983): Illuminate\Foundation\Application->make('Controllers\Adm...') #4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #11 {main} [] []
+[2014-02-19 13:27:39] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\ReportController does not exist' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php:308 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(308): ReflectionClass->__construct('Controllers\Adm...') #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(250): Illuminate\Container\Container->build('Controllers\Adm...', Array) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(480): Illuminate\Container\Container->make('Controllers\Adm...', Array) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(983): Illuminate\Foundation\Application->make('Controllers\Adm...') #4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #11 {main} [] []
+[2014-02-19 13:29:33] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\ReportController does not exist' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php:308 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(308): ReflectionClass->__construct('Controllers\Adm...') #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(250): Illuminate\Container\Container->build('Controllers\Adm...', Array) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(480): Illuminate\Container\Container->make('Controllers\Adm...', Array) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(983): Illuminate\Foundation\Application->make('Controllers\Adm...') #4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #11 {main} [] []
+[2014-02-19 13:29:57] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\ReportController does not exist' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php:308 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(308): ReflectionClass->__construct('Controllers\Adm...') #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(250): Illuminate\Container\Container->build('Controllers\Adm...', Array) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(480): Illuminate\Container\Container->make('Controllers\Adm...', Array) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(983): Illuminate\Foundation\Application->make('Controllers\Adm...') #4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #11 {main} [] []
+[2014-02-19 13:37:01] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\ReportController does not exist' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php:308 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(308): ReflectionClass->__construct('Controllers\Adm...') #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(250): Illuminate\Container\Container->build('Controllers\Adm...', Array) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(480): Illuminate\Container\Container->make('Controllers\Adm...', Array) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(983): Illuminate\Foundation\Application->make('Controllers\Adm...') #4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #11 {main} [] []
+[2014-02-19 13:38:20] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\ReportController does not exist' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php:308 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(308): ReflectionClass->__construct('Controllers\Adm...') #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(250): Illuminate\Container\Container->build('Controllers\Adm...', Array) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(480): Illuminate\Container\Container->make('Controllers\Adm...', Array) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(983): Illuminate\Foundation\Application->make('Controllers\Adm...') #4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #11 {main} [] []
+[2014-02-19 13:38:25] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 13:42:57] log.ERROR: exception 'InvalidArgumentException' with message 'View [backend/payments/create] not found.' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:135 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(76): Illuminate\View\FileViewFinder->findInPaths('backend/payment...', Array) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Environment.php(115): Illuminate\View\FileViewFinder->find('backend/payment...') #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(206): Illuminate\View\Environment->make('backend/payment...') #3 /var/www/arp_dev/app/controllers/admin/PaymentController.php(37): Illuminate\Support\Facades\Facade::__callStatic('make', Array) #4 /var/www/arp_dev/app/controllers/admin/PaymentController.php(37): Illuminate\Support\Facades\View::make('backend/payment...') #5 [internal function]: Controllers\Admin\PaymentController->getCreate() #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(138): call_user_func_array(Array, Array) #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(115): Illuminate\Routing\Controllers\Controller->callMethod('getCreate', Array) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getCreate', Array) #9 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #11 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #13 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #15 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #16 {main} [] []
+[2014-02-19 15:56:47] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ')', expecting ',' or ';'' in /var/www/arp_dev/app/storage/views/df7bcd99810854733699ad0024af3350:67 Stack trace: #0 [internal function]: Illuminate\Exception\Handler->handleShutdown() #1 {main} [] []
+[2014-02-19 15:56:54] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ')', expecting ',' or ';'' in /var/www/arp_dev/app/storage/views/df7bcd99810854733699ad0024af3350:70 Stack trace: #0 [internal function]: Illuminate\Exception\Handler->handleShutdown() #1 {main} [] []
+[2014-02-19 15:58:08] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ')', expecting ',' or ';'' in /var/www/arp_dev/app/storage/views/df7bcd99810854733699ad0024af3350:70 Stack trace: #0 [internal function]: Illuminate\Exception\Handler->handleShutdown() #1 {main} [] []
+[2014-02-19 15:58:36] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /var/www/arp_dev/app/storage/views/df7bcd99810854733699ad0024af3350:140 Stack trace: #0 [internal function]: Illuminate\Exception\Handler->handleShutdown() #1 {main} [] []
+[2014-02-19 15:58:53] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /var/www/arp_dev/app/storage/views/df7bcd99810854733699ad0024af3350:140 Stack trace: #0 [internal function]: Illuminate\Exception\Handler->handleShutdown() #1 {main} [] []
+[2014-02-19 15:59:02] log.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected end of file' in /var/www/arp_dev/app/storage/views/df7bcd99810854733699ad0024af3350:139 Stack trace: #0 [internal function]: Illuminate\Exception\Handler->handleShutdown() #1 {main} [] []
+[2014-02-19 16:06:19] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 16:08:35] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 16:21:27] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 16:42:06] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 16:59:39] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 17:04:43] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 17:07:33] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 17:09:00] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 17:10:24] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 17:10:36] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\ExternalinvoiceController does not exist' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php:308 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(308): ReflectionClass->__construct('Controllers\Adm...') #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Container/Container.php(250): Illuminate\Container\Container->build('Controllers\Adm...', Array) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(480): Illuminate\Container\Container->make('Controllers\Adm...', Array) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(983): Illuminate\Foundation\Application->make('Controllers\Adm...') #4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #5 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #11 {main} [] []
+[2014-02-19 17:21:39] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php:1429 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1050): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException)) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1014): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request)) #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #3 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #5 {main} [] []
+[2014-02-19 17:50:40] log.ERROR: exception 'InvalidArgumentException' with message 'View [no-access] not found.' in /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php:135 Stack trace: #0 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/FileViewFinder.php(76): Illuminate\View\FileViewFinder->findInPaths('no-access', Array) #1 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/View/Environment.php(115): Illuminate\View\FileViewFinder->find('no-access') #2 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(206): Illuminate\View\Environment->make('no-access') #3 /var/www/arp_dev/app/filters.php(116): Illuminate\Support\Facades\Facade::__callStatic('make', Array) #4 /var/www/arp_dev/app/filters.php(116): Illuminate\Support\Facades\View::make('no-access') #5 [internal function]: {closure}(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'manage_external...') #6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(159): call_user_func_array(Object(Closure), Array) #7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(262): Illuminate\Routing\Route->callFilter('hasAccess:manag...', Object(Illuminate\Http\Request), Array) #8 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(185): Illuminate\Routing\Controllers\Controller->callFilter(Object(Illuminate\Routing\Route), 'hasAccess:manag...', Object(Illuminate\Http\Request)) #9 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(109): Illuminate\Routing\Controllers\Controller->callBeforeFilters(Object(Illuminate\Routing\Router), 'getIndex') #10 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(985): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array) #11 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}() #12 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(80): call_user_func_array(Object(Closure), Array) #13 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Route.php(47): Illuminate\Routing\Route->callCallable() #14 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Router.php(1016): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request)) #15 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(576): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request)) #16 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(552): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request)) #17 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run() #18 {main} [] []
