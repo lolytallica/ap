@@ -6,6 +6,8 @@ use Mainvoice;
 use Cache;
 use Transactionorder;
 use Resultfields;
+use Reporttype;
+use DB;
 
                             /*===========================================
                                            Header Values
@@ -351,13 +353,18 @@ function reporttitle($searchfields)
     return $title;
 }
 /////////////
-/*
-function reportStatuses($reporttype)
+
+function reportStatuses($reporttypeID)
 {
-    switch($reporttype->searchtype)
+
+    // $reporttype = Reporttype::where('id','=','1')->first();
+
+   // var_dump($reporttype);
+
+    switch($reporttypeID)
     {
-        case 'orders':
-        case 'customers':
+        case '2':
+        case '5':
         {
             //$statuses = report_api_call('shop', 'statuses/order');
 
@@ -367,7 +374,7 @@ function reportStatuses($reporttype)
 
             break;
         }
-        case 'redemptions':
+        case '1':
         {
             // $statuses = report_api_call('voucher', 'statuses/voucher_event');
 
@@ -375,7 +382,7 @@ function reportStatuses($reporttype)
 
             break;
         }
-        case 'shopTransactions':
+        case '3':
         {
             // $statuses = report_api_call('shop', 'statuses/transaction');
 
@@ -385,7 +392,7 @@ function reportStatuses($reporttype)
 
             break;
         }
-        case 'validationrequests':
+        case '4':
         {
             $statuses = '';
             break;
@@ -395,8 +402,9 @@ function reportStatuses($reporttype)
 
     return $statuses;
 }
-*/
+
 ///////////////
+
 
 function fieldval($report, $fieldname)
 {
