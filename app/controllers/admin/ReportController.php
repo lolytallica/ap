@@ -49,9 +49,6 @@ class ReportController extends AdminController {
     public function getIndex($reportsearchID = null, $reporttypeID = null)
     {
 
-        //Conversion rate
-        $conversionrate = $this->conversionrate();
-
         if(is_null($reportsearchID))
         {
             $reportsearchID = 1; //default search form
@@ -66,14 +63,16 @@ class ReportController extends AdminController {
            // return Redirect::to();
         }
 
+        $reptype = Reporttype::join('report_search_fields','search_types.id','=','report_search_fields.reporttype_id')->where('report_search_fields.reportsearch_id','=',$reportsearchID)->first();
 
-        ///statuses
+        $reporttypeID = $reptype->reporttype_id; //echo $reporttypeID; exit;
 
-        $statuses = $this->reportStatuses();
 
-        var_dump($statuses); exit;
+        //var_dump(json_encode($statuses)); exit;
 
         $reportsearch = Reportsearch::find($reportsearchID);
+
+
 
         if(Session::get('reporttypeID'))
         {
@@ -99,13 +98,7 @@ class ReportController extends AdminController {
 
         $allreportforms = Reportsearch::where('id','<>','1')->get();
 
-
-
-
-
-
-
-        $rf = $this->reportresultfields($reporttypeID);
+       $rf = $this->reportresultfields($reporttypeID);
 
 
         $merchant  = Merchant::all();
@@ -118,6 +111,9 @@ class ReportController extends AdminController {
         ///Build Report Form
         $fields = $this->buildSearch();
 
+        ///statuses
+
+        $statuses = $this->reportStatuses();
 
 
         $transactionsbase = date('Y-m-d').' 00:00';
@@ -125,9 +121,8 @@ class ReportController extends AdminController {
         // Show the page
         return View::make('backend/reports/index')
             ->with('fields',$fields)
-            ->with('statuses',$statuses)
             ->with('reports',$allreportforms)
-            //->with('formfields',$formfields)
+            ->with('ffields',$formfields)
             ->with('formfields',json_encode($formfields))   //form fields by report type
            // ->with('resultfields',$rf)
             ->with('merchantlist',json_encode($merchants)) //merchants for dropdowns
@@ -135,8 +130,11 @@ class ReportController extends AdminController {
             ->with('merchantagreementlist',json_encode($merchantagreements)) //ma for added dropdown
             ->with('searchform',json_encode($ff))
             ->with('reporttypes',$allreporttypes) //dropdown
-            ->with('conversionrate',$conversionrate)
+            ->with('statuses',json_encode($statuses)) //dropdown
+            ->with('conversionrate',$this->conversionrate())
             ->with('reportsearch',$reportsearch)
+            ->with('reportsearchID',$reportsearchID)
+            ->with('reporttypeID',$reporttypeID)
             ->with('transactionsbase', $transactionsbase);
     }
 
@@ -147,6 +145,31 @@ class ReportController extends AdminController {
 
     public function reportStatuses()
     {
+
+      /*  switch($reporttype)
+        {
+            case 'redemptions':{
+                $statuses = DB::table('event')->whereIn('id', array('403','406','491'))->orderBy('id')->select('id','event')->get();
+                                   break;
+
+            }
+            case 'customers':
+            case 'orders':{
+                $status_query = 'select distinct "event".id, "event".event from "event" join "order" on "event".id = "order".status_id order by event.id';
+                $statuses = DB::select(DB::raw($status_query));
+                break;
+            }
+            case 'transactions':{
+                $status_query = 'select distinct "event".id, "event".event from "event" join "transaction" on "event".id = "transaction".status_id order by event.id';
+
+                $statuses = DB::select(DB::raw($status_query));
+            }
+
+            return $statuses;
+
+        }*/
+
+
         $allstatuses = array();
             //Orders, Customers
 
@@ -154,53 +177,34 @@ class ReportController extends AdminController {
 
                 $status_query = 'select distinct "event".id, "event".event from "event" join "order" on "event".id = "order".status_id order by event.id';
 
-                $statuses = DB::select(DB::raw($status_query));
-
-            foreach($statuses as $status)
-            {
-                $allstatuses['orders']['id']    = $status->id;
-                $allstatuses['orders']['event'] = $status->event;
-
-                $allstatuses['customers']['id']    = $status->id;
-                $allstatuses['customers']['event'] = $status->id;
-            }
-
-
+                $orders_statuses['orders'] = DB::select(DB::raw($status_query));
+                $customers_statuses['customers'] = DB::select(DB::raw($status_query));
 
             //Redemptions
 
                // $statuses = report_api_call('voucher', 'statuses/voucher_event');
 
-                $statuses = DB::table('event')->whereIn('id', array('403','406','491'))->orderBy('id')->get();
+                $redemptions_statuses['redemptions'] = DB::table('event')->whereIn('id', array('403','406','491'))->orderBy('id')->select('id','event')->get();
 
-            foreach($statuses as $status)
-            {
-                $allstatuses['redemptions']['id']    = $status->id;
-                $allstatuses['redemptions']['event'] = $status->event;
-            }
-
-
-            //Shop Transactions
+                 //Shop Transactions
 
                // $statuses = report_api_call('shop', 'statuses/transaction');
 
                 $status_query = 'select distinct "event".id, "event".event from "event" join "transaction" on "event".id = "transaction".status_id order by event.id';
 
-                $statuses = DB::select(DB::raw($status_query));
+                $transaction_statuses['transactions'] = DB::select(DB::raw($status_query));
 
-            foreach($statuses as $status)
-            {
-                $allstatuses['redemptions']['id']    = $status->id;
-                $allstatuses['redemptions']['event'] = $status->event;
-            }
 
             //Validation
 
-            $allstatuses['redemptions']['id']    = $status->id;
-            $allstatuses['redemptions']['event'] = $status->event;
+  //      $validation_statuses['validation'] = array();
+
+        $allstatuses['statuses'] = array($transaction_statuses, $redemptions_statuses, $orders_statuses);
+
+       // var_dump(json_encode($allstatuses)); exit;
 
 
-        return $statuses;
+        return $allstatuses;
     }
 
 
@@ -212,19 +216,17 @@ class ReportController extends AdminController {
 
     public function postSearchreport()
     {
-
-        $searchfields = Input::all(); //echo Input::get('search');
+        $searchfields = Input::all();
 
         if(Input::has('search'))
         {
             return $this->searchResults($searchfields);
         }
         else
-            if(Input::has('saveform'))
-            {
-                return $this->saveReportsearch($searchfields);
-            }
-
+        if(Input::has('saveform'))
+        {
+            return $this->saveReportsearch($searchfields);
+        }
     }
 
     /*=================================================
@@ -234,7 +236,6 @@ class ReportController extends AdminController {
     public function searchResults($searchfields)
     {
 
-        $conversionrate=60;
         $validator = Validator::make($searchfields, $this->searchRules);
 
         $report = Input::get('reportType');
@@ -253,7 +254,6 @@ class ReportController extends AdminController {
             case 'orders':
             {
                 $results = $this->searchOrders($searchfields);
-
                 break;
             }
             case 'redemptions':
@@ -279,7 +279,7 @@ class ReportController extends AdminController {
         }
 
 
-        return Redirect::to("admin/reports/searchreport")->with('conversionrate', $conversionrate)
+        return Redirect::to("admin/reports/searchreport")->with('conversionrate', $this->conversionrate())
             ->with('searchfields',$searchfields)
             ->with('results',$results)
             ->with('reporttype',$reporttype);
@@ -293,7 +293,7 @@ class ReportController extends AdminController {
     {
         //echo 'save modal';
 
-        $conversionrate = 60;
+
 
         $validator = Validator::make($searchfields, $this->formRules);
 
@@ -331,7 +331,7 @@ class ReportController extends AdminController {
 
         if($fields_saved>0)
         {
-        return Redirect::to("admin/reports/searchreport")->with('conversionrate', $conversionrate)
+        return Redirect::to("admin/reports/searchreport")->with('conversionrate', $this->conversionrate())
             ->with('message','success');
         }
         else
@@ -379,9 +379,6 @@ class ReportController extends AdminController {
 
     public function searchRedemptions($searchfields)
     {
-
-       //var_dump($searchfields); exit;
-        $conversionrate = 60;
 
         $postfields = array();
 
@@ -456,7 +453,6 @@ class ReportController extends AdminController {
 
     public function searchOrders($searchfields)
     {
-        $conversionrate = 60;
 
         $postfields = array();
 
@@ -512,8 +508,6 @@ class ReportController extends AdminController {
 
     public function searchCustomers($searchfields)
     {
-        $conversionrate = 60;
-
         $postfields = array();
 
         /*@TODO: GET dynamically from table*/
