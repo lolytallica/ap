@@ -90,7 +90,18 @@ Reports ::
                         </h4>
                     </div>
 
+                    <?php
 
+                    /*@todo: get all from same json*/
+
+                    $redemptions_statuses = json_encode(reportStatuses('1'));
+                    $order_statuses = json_encode(reportStatuses('2'));
+                    $transaction_statuses = json_encode(reportStatuses('3'));
+                    $validation_statuses = json_encode(reportStatuses('4'));
+
+
+
+                    ?>
                     <div class="controls pull-right span4">
                         <table class="table table-responsive"><tr><td>
 

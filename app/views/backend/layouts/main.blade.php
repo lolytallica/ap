@@ -212,7 +212,7 @@
 
             @if(Sentry::getUser()->hasAccess('manage_reports'))
             <li {{ (Request::is('admin/report*') ? ' class="active"' : '') }}>
-                <a href="{{ URL::to('admin/reports') }}" title="reporting">
+                <a href="{{ URL::to('admin/reports/searchreport') }}" title="reporting">
                     <div class="helper-font-24">
                         <i class="icofont-bar-chart"></i>
                     </div>
@@ -390,6 +390,11 @@
 
             if(!@count($merchantprofile)) { $merchantprofile = '';}
             if(!@$searchfield) { $searchfield = '';}
+
+
+
+
+
             ?>
 
     $(document).ready(function() {
@@ -403,12 +408,17 @@
 ///////
         $("#reportType").change(function(){
             var reporttypeID = $("#reportType").val();
+
             var searchform = '{{ $searchform }}';
 
             var merchants = '{{ $merchantlist }}' ;
 
+            var statuses = '{{ $statuses }}';
+
+
             ///Enable save form when report type is selected
 
+            ///
 
             var formfields='';
 
@@ -416,7 +426,6 @@
 
                 if(ffield.reporttype_id == reporttypeID)
                 {
-//                    alert(searchform);
 
                     if(ffield.fieldname == 'merchant' || ffield.fieldname == 'merchant_id')
                     {
@@ -447,10 +456,48 @@
 
                     }
                     else
+                    if(ffield.fieldname == 'status')
+                    {
+                        switch(reporttypeID){
+                            case '1':
+                            {
+                                statuses = '{{ $redemptions_statuses}}'; break;
+                            }
+                            case '2':
+                            case '5':
+                            {
+                                statuses = '{{ $order_statuses}}'; break;
+                            }
+                            case '3':
+                            {
+                                statuses = '{{ $transaction_statuses}}'; break;
+                            }
+                            case '4':
+                            {
+                                statuses = '{{ $validation_statuses}}'; break;
+                            }
+                        }
+
+          //  alert(statuses);
+
+                        formfields += '<tr><td>'+ffield.fielddescription+'</td><td><select id="'+ ffield.fieldname +'" name="'+ffield.fieldname+'" data-form="select2" style="width:200px" data-placeholder="Select Status">';
+
+                        formfields += '<option value="all" selected>All</option>';
+                        formfields += '<option value="summary" selected>Summary</option>';
+
+                        $.each($.parseJSON(statuses), function(x, status) {
+
+
+                            formfields += '<option value="'+ status.id +'" >'+status.id+' '+ status.event +'</option>';
+
+                        });
+
+                        formfields += '</select></td></tr>';
+                    }
+                    else
                     {
                         formfields += '<tr><td>'+ffield.fielddescription+'</td><td><input type="text" class="grd-white" id="'+ ffield.fieldname +'" name="'+ ffield.fieldname +'" value="" placeholder="" data-validation = "'+ffield.data_validation+'" data-validation-optional="true" /></td></tr>';
                     }
-
 
 
                     $("#formFields").empty();
@@ -460,7 +507,7 @@
                 else
                 {
                     formfields = '';
-                    formmodalfields = '';
+
 
                 }
 
