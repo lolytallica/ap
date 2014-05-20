@@ -98,7 +98,7 @@ Reports ::
                     $transaction_statuses = json_encode(reportStatuses('3'));
                     $validation_statuses = json_encode(reportStatuses('4'));
 
-                   
+
 
                     ?>
                     <div class="controls pull-right span4">

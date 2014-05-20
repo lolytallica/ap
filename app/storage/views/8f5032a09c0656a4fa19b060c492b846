@@ -391,11 +391,7 @@
             if(!@count($merchantprofile)) { $merchantprofile = '';}
             if(!@$searchfield) { $searchfield = '';}
 
-
-
-
-
-            ?>
+             ?>
 
     $(document).ready(function() {
        /*===================================================== My JS ========================================
@@ -413,7 +409,7 @@
 
             var merchants = '<?php echo $merchantlist; ?>' ;
 
-            var statuses = '<?php echo $statuses; ?>';
+
 
 
             ///Enable save form when report type is selected
@@ -461,20 +457,20 @@
                         switch(reporttypeID){
                             case '1':
                             {
-                                statuses = '<?php echo $redemptions_statuses; ?>'; break;
+                                statuses = '<?php echo @$redemptions_statuses; ?>'; break;
                             }
                             case '2':
                             case '5':
                             {
-                                statuses = '<?php echo $order_statuses; ?>'; break;
+                                statuses = '<?php echo @$order_statuses; ?>'; break;
                             }
                             case '3':
                             {
-                                statuses = '<?php echo $transaction_statuses; ?>'; break;
+                                statuses = '<?php echo @$transaction_statuses; ?>'; break;
                             }
                             case '4':
                             {
-                                statuses = '<?php echo $validation_statuses; ?>'; break;
+                                statuses = '<?php echo @$validation_statuses; ?>'; break;
                             }
                         }
 

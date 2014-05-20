@@ -63,12 +63,16 @@ class ReportController extends AdminController {
            // return Redirect::to();
         }
 
+        $reptype = Reporttype::join('report_search_fields','search_types.id','=','report_search_fields.reporttype_id')->where('report_search_fields.reportsearch_id','=',$reportsearchID)->first();
 
+        $reporttypeID = $reptype->reporttype_id; //echo $reporttypeID; exit;
 
 
         //var_dump(json_encode($statuses)); exit;
 
         $reportsearch = Reportsearch::find($reportsearchID);
+
+
 
         if(Session::get('reporttypeID'))
         {
@@ -129,6 +133,8 @@ class ReportController extends AdminController {
             ->with('statuses',json_encode($statuses)) //dropdown
             ->with('conversionrate',$this->conversionrate())
             ->with('reportsearch',$reportsearch)
+            ->with('reportsearchID',$reportsearchID)
+            ->with('reporttypeID',$reporttypeID)
             ->with('transactionsbase', $transactionsbase);
     }
 
