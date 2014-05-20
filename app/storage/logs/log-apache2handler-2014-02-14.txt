@@ -1,0 +1,83 @@
+[2014-02-14 15:44:34] log.ERROR: exception 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException' in /var/www/arp_dev/bootstrap/compiled.php:4928
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(4773): Illuminate\Routing\Router->handleRoutingException(Object(Symfony\Component\Routing\Exception\ResourceNotFoundException))
+#1 /var/www/arp_dev/bootstrap/compiled.php(4761): Illuminate\Routing\Router->findRoute(Object(Illuminate\Http\Request))
+#2 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#3 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#4 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#5 {main} [] []
+[2014-02-14 15:59:13] log.ERROR: exception 'ReflectionException' with message 'Class Controllers\Admin\InvoiceController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers\Adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers\Adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers\Adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers\Adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-14 16:07:44] log.ERROR: exception 'ReflectionException' with message 'Class Controllers/admin/DashboardController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('Controllers/adm...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('Controllers/adm...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('Controllers/adm...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('Controllers/adm...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-14 16:08:29] log.ERROR: exception 'ReflectionException' with message 'Class admin/DashboardController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('admin/Dashboard...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('admin/Dashboard...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('admin/Dashboard...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('admin/Dashboard...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-14 16:09:47] log.ERROR: exception 'ReflectionException' with message 'Class admin/DashboardController does not exist' in /var/www/arp_dev/bootstrap/compiled.php:165
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(165): ReflectionClass->__construct('admin/Dashboard...')
+#1 /var/www/arp_dev/bootstrap/compiled.php(142): Illuminate\Container\Container->build('admin/Dashboard...', Array)
+#2 /var/www/arp_dev/bootstrap/compiled.php(442): Illuminate\Container\Container->make('admin/Dashboard...', Array)
+#3 /var/www/arp_dev/bootstrap/compiled.php(4750): Illuminate\Foundation\Application->make('admin/Dashboard...')
+#4 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#5 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#6 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#7 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#8 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#9 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#10 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#11 {main} [] []
+[2014-02-14 16:10:06] log.ERROR: exception 'InvalidArgumentException' with message 'View [backend/dashboard.index] not found.' in /var/www/arp_dev/bootstrap/compiled.php:8051
+Stack trace:
+#0 /var/www/arp_dev/bootstrap/compiled.php(8024): Illuminate\View\FileViewFinder->findInPaths('backend/dashboa...', Array)
+#1 /var/www/arp_dev/bootstrap/compiled.php(8124): Illuminate\View\FileViewFinder->find('backend/dashboa...')
+#2 /var/www/arp_dev/bootstrap/compiled.php(3319): Illuminate\View\Environment->make('backend/dashboa...')
+#3 /var/www/arp_dev/app/controllers/DashboardController.php(34): Illuminate\Support\Facades\Facade::__callStatic('make', Array)
+#4 /var/www/arp_dev/app/controllers/DashboardController.php(34): Illuminate\Support\Facades\View::make('backend/dashboa...')
+#5 [internal function]: DashboardController->getIndex()
+#6 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(138): call_user_func_array(Array, Array)
+#7 /var/www/arp_dev/vendor/laravel/framework/src/Illuminate/Routing/Controllers/Controller.php(115): Illuminate\Routing\Controllers\Controller->callMethod('getIndex', Array)
+#8 /var/www/arp_dev/bootstrap/compiled.php(4751): Illuminate\Routing\Controllers\Controller->callAction(Object(Illuminate\Foundation\Application), Object(Illuminate\Routing\Router), 'getIndex', Array)
+#9 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}()
+#10 /var/www/arp_dev/bootstrap/compiled.php(7820): call_user_func_array(Object(Closure), Array)
+#11 /var/www/arp_dev/bootstrap/compiled.php(7807): Illuminate\Routing\Route->callCallable()
+#12 /var/www/arp_dev/bootstrap/compiled.php(4762): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#13 /var/www/arp_dev/bootstrap/compiled.php(481): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#14 /var/www/arp_dev/bootstrap/compiled.php(470): Illuminate\Foundation\Application->dispatch(Object(Illuminate\Http\Request))
+#15 /var/www/arp_dev/public/index.php(49): Illuminate\Foundation\Application->run()
+#16 {main} [] []
