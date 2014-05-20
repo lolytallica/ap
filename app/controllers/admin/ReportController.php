@@ -122,7 +122,7 @@ class ReportController extends AdminController {
         return View::make('backend/reports/index')
             ->with('fields',$fields)
             ->with('reports',$allreportforms)
-            //->with('formfields',$formfields)
+            ->with('ffields',$formfields)
             ->with('formfields',json_encode($formfields))   //form fields by report type
            // ->with('resultfields',$rf)
             ->with('merchantlist',json_encode($merchants)) //merchants for dropdowns

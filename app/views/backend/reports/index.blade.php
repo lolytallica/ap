@@ -99,7 +99,7 @@ Reports ::
                     $transaction_statuses = json_encode(reportStatuses('3'));
                     $validation_statuses = json_encode(reportStatuses('4'));
 
-
+                  //  var_dump($ffields); exit;
 
                     ?>
                     <div class="controls pull-right span4">
@@ -160,7 +160,7 @@ Reports ::
                                                     <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType">
                                                         <option value="select" selected>--- Select report ---</option>
                                                         @foreach($reporttypes as $reptype)
-                                                        <option value="{{$reptype->id}}">{{ucwords($reptype->description)}}</option>
+                                                        <option value="{{$reptype->id}}" {{(($reportsearchID>1 && $reporttypeID == $reptype->id)? 'selected':'')}} >{{ucwords($reptype->description)}}</option>
                                                         @endforeach
                                                     </select>
 
@@ -183,6 +183,29 @@ Reports ::
                                         <div class="box-body">
                                                 <table id="formFields" class="table " style="vertical-align: top">
                                                 <!---- Dynamic Form from js -->
+                                                    @if($reportsearchID>1)
+                                                    @foreach($ffields as $field)
+                                                    <tr><td>
+                                                            {{ucwords($field->fielddescription)}}</td>
+                                                        <td>
+                                                            @if($field->fieldname =='merchant' || $field->fieldname=='merchant_id')
+                                                            <select>
+                                                                @foreach($merchants as $merchant)
+                                                                <option value="{{$merchant->id}}">{{$merchant->merchant}}</option>
+                                                                @endforeach
+                                                                </select>
+
+                                                            @elseif($field->fieldname=='date_from' || $field->fieldname=='date_to')
+                                                            <a href="javascript:void(0);" class="clickdate"><div class="input-append date" data-form="datepicker" data-date="" data-date-format="yyyy-mm-dd" id="{{$field->fieldname}}"> <input id="{{$field->fieldname}}" name="{{$field->fieldname}}" class="grd-white" data-form="" size="16" type="text" value="" data-validation="{{$field->data_validation}}" data-validation-format="{{$field->data_validation_condition}}" > <span class="add-on"><i class="icon-th"></i></span> </div></a>
+
+                                                            @else
+                                                            <input type="text" class="grd-white" id="{{$field->fieldname}}" name="{{$field->fieldname}}" value="" placeholder="" data-validation = "{{$field->data_validation}}" data-validation-optional="true" />
+                                                            @endif
+
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    @endif
                                                 </table>
 
                                         </div>

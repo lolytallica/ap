@@ -98,7 +98,7 @@ Reports ::
                     $transaction_statuses = json_encode(reportStatuses('3'));
                     $validation_statuses = json_encode(reportStatuses('4'));
 
-
+                  //  var_dump($ffields); exit;
 
                     ?>
                     <div class="controls pull-right span4">
@@ -159,7 +159,7 @@ Reports ::
                                                     <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType">
                                                         <option value="select" selected>--- Select report ---</option>
                                                         <?php foreach($reporttypes as $reptype): ?>
-                                                        <option value="<?php echo $reptype->id; ?>"><?php echo ucwords($reptype->description); ?></option>
+                                                        <option value="<?php echo $reptype->id; ?>" <?php echo (($reportsearchID>1 && $reporttypeID == $reptype->id)? 'selected':''); ?> ><?php echo ucwords($reptype->description); ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
 
@@ -182,6 +182,29 @@ Reports ::
                                         <div class="box-body">
                                                 <table id="formFields" class="table " style="vertical-align: top">
                                                 <!---- Dynamic Form from js -->
+                                                    <?php if($reportsearchID>1): ?>
+                                                    <?php foreach($ffields as $field): ?>
+                                                    <tr><td>
+                                                            <?php echo ucwords($field->fielddescription); ?></td>
+                                                        <td>
+                                                            <?php if($field->fieldname =='merchant' || $field->fieldname=='merchant_id'): ?>
+                                                            <select>
+                                                                <?php foreach($merchants as $merchant): ?>
+                                                                <option value="<?php echo $merchant->id; ?>"><?php echo $merchant->merchant; ?></option>
+                                                                <?php endforeach; ?>
+                                                                </select>
+
+                                                            <?php elseif($field->fieldname=='date_from' || $field->fieldname=='date_to'): ?>
+                                                            <a href="javascript:void(0);" class="clickdate"><div class="input-append date" data-form="datepicker" data-date="" data-date-format="yyyy-mm-dd" id="<?php echo $field->fieldname; ?>"> <input id="<?php echo $field->fieldname; ?>" name="<?php echo $field->fieldname; ?>" class="grd-white" data-form="" size="16" type="text" value="" data-validation="<?php echo $field->data_validation; ?>" data-validation-format="<?php echo $field->data_validation_condition; ?>" > <span class="add-on"><i class="icon-th"></i></span> </div></a>
+
+                                                            <?php else: ?>
+                                                            <input type="text" class="grd-white" id="<?php echo $field->fieldname; ?>" name="<?php echo $field->fieldname; ?>" value="" placeholder="" data-validation = "<?php echo $field->data_validation; ?>" data-validation-optional="true" />
+                                                            <?php endif; ?>
+
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                    <?php endif; ?>
                                                 </table>
 
                                         </div>
