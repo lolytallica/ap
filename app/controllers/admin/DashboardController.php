@@ -16,13 +16,13 @@ use Sentry;
 
 class DashboardController extends AdminController {
 
-	/**
-	 * Show the administration dashboard page.
-	 *
-	 * @return View
-	 */
-	public function getIndex()
-	{
+    /**
+     * Show the administration dashboard page.
+     *
+     * @return View
+     */
+    public function getIndex()
+    {
 
         ///Access Type
 
@@ -50,36 +50,36 @@ class DashboardController extends AdminController {
         $usersgroups = $user->getGroups();
 
         if($user->inGroup(Sentry::getGroupProvider()->findByName('admin')) ||
-           $user->inGroup(Sentry::getGroupProvider()->findByName('manager')) ||
-           $user->inGroup(Sentry::getGroupProvider()->findByName('accounting')) ||
-           $user->inGroup(Sentry::getGroupProvider()->findByName('fraud')) ||
-           $user->inGroup(Sentry::getGroupProvider()->findByName('helpdesk')) ||
-           $user->inGroup(Sentry::getGroupProvider()->findByName('users'))
+            $user->inGroup(Sentry::getGroupProvider()->findByName('manager')) ||
+            $user->inGroup(Sentry::getGroupProvider()->findByName('accounting')) ||
+            $user->inGroup(Sentry::getGroupProvider()->findByName('fraud')) ||
+            $user->inGroup(Sentry::getGroupProvider()->findByName('helpdesk')) ||
+            $user->inGroup(Sentry::getGroupProvider()->findByName('users'))
         )
         {
 
-        $total  = array();
-        $paid   = array();
-        $unpaid = array();
+            $total  = array();
+            $paid   = array();
+            $unpaid = array();
 
-        update_cache();
-        /////////////////////
+            update_cache();
+            /////////////////////
 
-        $new_invoices = Mainvoice::where('created_at','>=',date("Y-m-d"))
-            ->orderBy('id','Desc')
-            ->limit(3)
-            ->get();
+            $new_invoices = Mainvoice::where('created_at','>=',date("Y-m-d"))
+                ->orderBy('id','Desc')
+                ->limit(3)
+                ->get();
 
-        $paid_invoices = Mainvoice::join('mainvoicestatus','mainvoicestatus.mainvoice_id','=','mainvoice.id')
-            ->where('mainvoicestatus.invoicestatus_id','=','3')
-            ->orderBy('mainvoice.id','Desc')
-            ->limit(3)
-            ->get();
+            $paid_invoices = Mainvoice::join('mainvoicestatus','mainvoicestatus.mainvoice_id','=','mainvoice.id')
+                ->where('mainvoicestatus.invoicestatus_id','=','3')
+                ->orderBy('mainvoice.id','Desc')
+                ->limit(3)
+                ->get();
 
-        $tobepaid = Mainvoice::where('payout_date','=',date("Y-m-d 00:00:00"))->orWhere('payout_date','=',date("Y-m-d 23:59:59"))
-            ->orderBy('id')
-            ->limit(3)
-            ->get();
+            $tobepaid = Mainvoice::where('payout_date','=',date("Y-m-d 00:00:00"))->orWhere('payout_date','=',date("Y-m-d 23:59:59"))
+                ->orderBy('id')
+                ->limit(3)
+                ->get();
 
             $totaltobepaid = Mainvoice::where('payout_date','=',date("Y-m-d 00:00:00"))->orWhere('payout_date','=',date("Y-m-d 23:59:59"))
                 ->orderBy('id')
@@ -87,223 +87,161 @@ class DashboardController extends AdminController {
 
             $num_tobepaid = count($totaltobepaid); //Mainvoice::where('payout_date','=',date("Y-m-d 00:00:00"))->orWhere('payout_date','=',date("Y-m-d 23:59:59"))->count();
 
-        $ppaid_invoices = Mainvoice::join('mainvoicestatus','mainvoicestatus.mainvoice_id','=','mainvoice.id')
-            ->where('mainvoicestatus.invoicestatus_id','=','4')
-            ->orderBy('mainvoice.id','Desc')
-            ->limit(3)
-            ->get();
+            $ppaid_invoices = Mainvoice::join('mainvoicestatus','mainvoicestatus.mainvoice_id','=','mainvoice.id')
+                ->where('mainvoicestatus.invoicestatus_id','=','4')
+                ->orderBy('mainvoice.id','Desc')
+                ->limit(3)
+                ->get();
 
-        foreach($ppaid_invoices as $ppi)
-        {
-            $paid[$ppi->mainvoice_id] = 0;
+            foreach($ppaid_invoices as $ppi)
+            {
+                $paid[$ppi->mainvoice_id] = 0;
 
-        }
+            }
 
-        $overdue_invoices = Mainvoice::where('payout_date','<',date("Y-m-d H:i:s"))
-            ->orderBy('id','asc')
-            ->limit(3)
-            ->get();
+            $overdue_invoices = Mainvoice::where('payout_date','<',date("Y-m-d H:i:s"))
+                ->orderBy('id','asc')
+                ->limit(3)
+                ->get();
 
             $num_overdue = Mainvoice::join('mainvoicestatus','mainvoicestatus.mainvoice_id','=','mainvoice.id')
                 ->where('mainvoicestatus.invoicestatus_id','=','6')->count();
 
-        $recentpayments = Mapayment::orderBy('id','DESC')->limit(5)->get();
+            $recentpayments = Mapayment::orderBy('id','DESC')->limit(5)->get();
 
-        $payments = Mapayment::join('mainvoicestatus','mainvoicestatus.mainvoice_id','=','mapayment.mainvoice_id')
-                    ->where('mainvoicestatus.invoicestatus_id','=','4')
-                    ->get();
+            $payments = Mapayment::join('mainvoicestatus','mainvoicestatus.mainvoice_id','=','mapayment.mainvoice_id')
+                ->where('mainvoicestatus.invoicestatus_id','=','4')
+                ->get();
 
 
-        foreach($payments as $pay)
-        {
-            $total[$pay->mainvoice_id] = $pay->total_processed;
-            $paid[$pay->mainvoice_id] += $pay->amount_processed;
-            $unpaid[$pay->mainvoice_id] =  $total[$pay->mainvoice_id] - $paid[$pay->mainvoice_id];
-        }
+            foreach($payments as $pay)
+            {
+                $total[$pay->mainvoice_id] = $pay->total_processed;
+                $paid[$pay->mainvoice_id] += $pay->amount_processed;
+                $unpaid[$pay->mainvoice_id] =  $total[$pay->mainvoice_id] - $paid[$pay->mainvoice_id];
+            }
 
             /*-- =========================================================
                            Graphs per merchant agreement last 10 days
             ========================================================== --*/
 
-        $date_from = date("Y-m-d", (strtotime(date("Y-m-d")) - (3600*24*10) ) );
-        $date_to = date("Y-m-d");
+            $date_from = date("Y-m-d", (strtotime(date("Y-m-d")) - (3600*24*10) ) );
+            $date_to = date("Y-m-d");
 
-        $allcurrencies = Transactionorder::select('currency')->distinct()->get();
+            $allcurrencies = Transactionorder::select('currency')->distinct()->get();
 
             ////////Transactions
 
-        //Number
-        $transactions = $this->getTransactions($date_from, $date_to);
+            //Number
+            $transactions = $this->getTransactions($date_from, $date_to);
 
-        $transactionTable = Lava::DataTable('Transactions');
+            $transactionTable = Lava::DataTable('Transactions');
 
-        $transactionTable->addColumn('string', 'Merchant agreement');
-        $transactionTable->addColumn('number', 'Transactions');
+            $transactionTable->addColumn('string', 'Merchant agreement');
+            $transactionTable->addColumn('number', 'Transactions');
 
-        foreach($transactions as $transaction)
-        {
-            foreach($transaction as $tr)
+            foreach($transactions as $transaction)
             {
-           $data_tr[0] = $tr->name;
-           $data_tr[1] = $tr->totaltransaction;
-
-           $transactionTable->addRow($data_tr);
-            }
-        }
-
-
-        $config_transaction = array(
-            'title' => 'Transactions per merchant agreement'
-        );
-
-        Lava::PieChart('Transactions')->setConfig($config_transaction);
-
-        /**** Currency ****/
-        foreach($allcurrencies as $currency)
-        {
-        //Amounts
-        $transactions_amount = $this->getTransactionsamount($currency->currency, $date_from, $date_to);
-
-        $transactionchart = 'transaction_'.$currency->currency;
-
-        $transactionamountTable = Lava::DataTable($transactionchart);
-
-        $transactionamountTable->addColumn('string', 'Merchant agreement');
-        $transactionamountTable->addColumn('number', 'Transactions amount');
-
-        foreach($transactions_amount as $transaction)
-        {
-            foreach($transaction as $tr)
-            {
-                $data_tra[0] = $tr->name;
-                $data_tra[1] = $tr->totaltransaction;
-
-                $transactionamountTable->addRow($data_tra);
-            }
-        }
-
-        $config_transaction_amount = array(
-
-            'colors' => array('green'),
-            'hAxis' => Lava::hAxis(array(
-
-                    'textPosition' => 'out',
-                    'textStyle' => Lava::textStyle(array(
-                            'color' => '#DDAA88',
-                            'fontName' => 'Arial',
-                            'fontSize' => 10
-                        )),
-                    'slantedText' => TRUE,
-                    'slantedTextAngle' => 30,
-
-
-                )),
-            'vAxis' => Lava::vAxis(array(
-                    'baseline' => 5,
-
-                    'textPosition' => 'out',
-                    'textStyle' => Lava::textStyle(array(
-                            'color' => '#DDAA88',
-                            'fontName' => 'Arial',
-                            'fontSize' => 10
-                        )),
-
-                    'titleTextStyle' => Lava::textStyle(array(
-                            'color' => '#5C6DAB',
-                            'fontSize' => 14
-                        )),
-                ))
-        );
-
-        Lava::ColumnChart($transactionchart)->setConfig($config_transaction_amount);
-        }
-        //
-
-            ////////Refunds
-
-        //Numbers
-        $refunds = $this->getRefunds($date_from, $date_to);
-
-        $refundsTable = Lava::DataTable('Refunds');
-
-        $refundsTable->addColumn('string', 'Merchant agreement');
-        $refundsTable->addColumn('number', 'Refunds');
-
-        foreach($refunds as $ref)
-        {
-            foreach($ref as $refund)
-            {
-                $data_ref[0] = $refund->name;
-                $data_ref[1] = $refund->totalrefunds;
-
-                $refundsTable->addRow($data_ref);
-            }
-        }
-
-
-        $config_refunds = array(
-
-            'colors' => array('darkred'),
-            'hAxis' => Lava::hAxis(array(
-                    'baselineColor' => '#fc32b0',
-
-
-                    'textPosition' => 'out',
-                    'textStyle' => Lava::textStyle(array(
-                            'color' => '#DDAA88',
-                            'fontSize' => 10
-                        )),
-                    'slantedText' => TRUE,
-                    'slantedTextAngle' => 30,
-
-
-                )),
-            'vAxis' => Lava::vAxis(array(
-
-                    'textPosition' => 'out',
-                    'textStyle' => Lava::textStyle(array(
-                            'color' => '#DDAA88',
-                            'fontName' => 'Arial Bold',
-                            'fontSize' => 10
-                        )),
-
-                    'titleTextStyle' => Lava::textStyle(array(
-                            'color' => '#5C6DAB',
-                            'fontSize' => 14
-                        )),
-                ))
-        );
-
-        Lava::ColumnChart('Refunds')->setConfig($config_refunds);
-
-        //Amounts
-
-            ////////**** Currency ****////////
-
-        foreach($allcurrencies as $currency)
-        {
-            //////Amounts
-            $refunds_amount = $this->getRefundsamount($currency->currency, $date_from, $date_to);
-
-            $refundschart = 'refunds_'.$currency->currency;
-
-            $refundsamountTable = Lava::DataTable($refundschart);
-
-            $refundsamountTable->addColumn('string', 'Merchant agreement');
-            $refundsamountTable->addColumn('number', 'Refunds amount');
-
-            foreach($refunds_amount as $refamount)
-            {
-                foreach($refamount as $refa)
+                foreach($transaction as $tr)
                 {
-                    $data_refa[0] = $refa->name;
-                    $data_refa[1] = $refa->totalrefunds;
+                    $data_tr[0] = $tr->name;
+                    $data_tr[1] = $tr->totaltransaction;
 
-                    $refundsamountTable->addRow($data_refa);
+                    $transactionTable->addRow($data_tr);
                 }
             }
 
-            $config_refunds_amount = array(
+
+            $config_transaction = array(
+                'title' => 'Transactions per merchant agreement'
+            );
+
+            Lava::PieChart('Transactions')->setConfig($config_transaction);
+
+            /**** Currency ****/
+            foreach($allcurrencies as $currency)
+            {
+                //Amounts
+                $transactions_amount = $this->getTransactionsamount($currency->currency, $date_from, $date_to);
+
+                $transactionchart = 'transaction_'.$currency->currency;
+
+                $transactionamountTable = Lava::DataTable($transactionchart);
+
+                $transactionamountTable->addColumn('string', 'Merchant agreement');
+                $transactionamountTable->addColumn('number', 'Transactions amount');
+
+                foreach($transactions_amount as $transaction)
+                {
+                    foreach($transaction as $tr)
+                    {
+                        $data_tra[0] = $tr->name;
+                        $data_tra[1] = $tr->totaltransaction;
+
+                        $transactionamountTable->addRow($data_tra);
+                    }
+                }
+
+                $config_transaction_amount = array(
+
+                    'colors' => array('green'),
+                    'hAxis' => Lava::hAxis(array(
+
+                            'textPosition' => 'out',
+                            'textStyle' => Lava::textStyle(array(
+                                    'color' => '#DDAA88',
+                                    'fontName' => 'Arial',
+                                    'fontSize' => 10
+                                )),
+                            'slantedText' => TRUE,
+                            'slantedTextAngle' => 30,
+
+
+                        )),
+                    'vAxis' => Lava::vAxis(array(
+                            'baseline' => 5,
+
+                            'textPosition' => 'out',
+                            'textStyle' => Lava::textStyle(array(
+                                    'color' => '#DDAA88',
+                                    'fontName' => 'Arial',
+                                    'fontSize' => 10
+                                )),
+
+                            'titleTextStyle' => Lava::textStyle(array(
+                                    'color' => '#5C6DAB',
+                                    'fontSize' => 14
+                                )),
+                        ))
+                );
+
+                Lava::ColumnChart($transactionchart)->setConfig($config_transaction_amount);
+            }
+            //
+
+            ////////Refunds
+
+            //Numbers
+            $refunds = $this->getRefunds($date_from, $date_to);
+
+            $refundsTable = Lava::DataTable('Refunds');
+
+            $refundsTable->addColumn('string', 'Merchant agreement');
+            $refundsTable->addColumn('number', 'Refunds');
+
+            foreach($refunds as $ref)
+            {
+                foreach($ref as $refund)
+                {
+                    $data_ref[0] = $refund->name;
+                    $data_ref[1] = $refund->totalrefunds;
+
+                    $refundsTable->addRow($data_ref);
+                }
+            }
+
+
+            $config_refunds = array(
 
                 'colors' => array('darkred'),
                 'hAxis' => Lava::hAxis(array(
@@ -335,101 +273,163 @@ class DashboardController extends AdminController {
                             )),
                     ))
             );
-            Lava::ColumnChart($refundschart)->setConfig($config_refunds_amount);
-        }
-        //
 
-        ////////Chargebacks
+            Lava::ColumnChart('Refunds')->setConfig($config_refunds);
 
-        //Numbers
-        $chbs = $this->getChargebacks($date_from, $date_to);
+            //Amounts
 
-        $chbTable = Lava::DataTable('Chargebacks');
+            ////////**** Currency ****////////
 
-        $chbTable->addColumn('string', 'Merchant agreement');
-        $chbTable->addColumn('number', 'CHB');
-
-        foreach($chbs as $chargeback)
-        {
-            foreach($chargeback as $chb)
+            foreach($allcurrencies as $currency)
             {
-                $data_chb[0] = $chb->name;
-                $data_chb[1] = $chb->totalchb;
+                //////Amounts
+                $refunds_amount = $this->getRefundsamount($currency->currency, $date_from, $date_to);
 
-                $chbTable->addRow($data_chb);
-            }
-        }
+                $refundschart = 'refunds_'.$currency->currency;
 
+                $refundsamountTable = Lava::DataTable($refundschart);
 
-        $config_chb = array(
-            'colors' => array('teal'),
-        );
+                $refundsamountTable->addColumn('string', 'Merchant agreement');
+                $refundsamountTable->addColumn('number', 'Refunds amount');
 
-        Lava::AreaChart('Chargebacks')->setConfig($config_chb);
-
-
-        //Amounts
-            /**** Currency ****/
-        foreach($allcurrencies as $currency)
-        {
-            $chb_amount = $this->getChargebacksamount($currency->currency, $date_from, $date_to);
-
-            $chbchart = 'chb_'.$currency->currency;
-
-            $chbamountTable = Lava::DataTable($chbchart);
-
-            $chbamountTable->addColumn('string', 'Merchant agreement');
-            $chbamountTable->addColumn('number', 'CHB amount');
-
-            foreach($chb_amount as $chbamount)
-            {
-                foreach($chbamount as $chba)
+                foreach($refunds_amount as $refamount)
                 {
-                    $data_chba[0] = $chba->name;
-                    $data_chba[1] = $chba->totalchb;
+                    foreach($refamount as $refa)
+                    {
+                        $data_refa[0] = $refa->name;
+                        $data_refa[1] = $refa->totalrefunds;
 
-                    $chbamountTable->addRow($data_chba);
+                        $refundsamountTable->addRow($data_refa);
+                    }
+                }
+
+                $config_refunds_amount = array(
+
+                    'colors' => array('darkred'),
+                    'hAxis' => Lava::hAxis(array(
+                            'baselineColor' => '#fc32b0',
+
+
+                            'textPosition' => 'out',
+                            'textStyle' => Lava::textStyle(array(
+                                    'color' => '#DDAA88',
+                                    'fontSize' => 10
+                                )),
+                            'slantedText' => TRUE,
+                            'slantedTextAngle' => 30,
+
+
+                        )),
+                    'vAxis' => Lava::vAxis(array(
+
+                            'textPosition' => 'out',
+                            'textStyle' => Lava::textStyle(array(
+                                    'color' => '#DDAA88',
+                                    'fontName' => 'Arial Bold',
+                                    'fontSize' => 10
+                                )),
+
+                            'titleTextStyle' => Lava::textStyle(array(
+                                    'color' => '#5C6DAB',
+                                    'fontSize' => 14
+                                )),
+                        ))
+                );
+                Lava::ColumnChart($refundschart)->setConfig($config_refunds_amount);
+            }
+            //
+
+            ////////Chargebacks
+
+            //Numbers
+            $chbs = $this->getChargebacks($date_from, $date_to);
+
+            $chbTable = Lava::DataTable('Chargebacks');
+
+            $chbTable->addColumn('string', 'Merchant agreement');
+            $chbTable->addColumn('number', 'CHB');
+
+            foreach($chbs as $chargeback)
+            {
+                foreach($chargeback as $chb)
+                {
+                    $data_chb[0] = $chb->name;
+                    $data_chb[1] = $chb->totalchb;
+
+                    $chbTable->addRow($data_chb);
                 }
             }
 
 
-
-            $config_chb_amount = array(
-
+            $config_chb = array(
                 'colors' => array('teal'),
-                'hAxis' => Lava::hAxis(array(
-                        'baselineColor' => '#fc32b0',
-
-
-                        'textPosition' => 'out',
-                        'textStyle' => Lava::textStyle(array(
-                                'color' => '#DDAA88',
-                                'fontSize' => 10
-                            )),
-                        'slantedText' => TRUE,
-                        'slantedTextAngle' => 30,
-
-
-                    )),
-                'vAxis' => Lava::vAxis(array(
-
-                        'textPosition' => 'out',
-                        'textStyle' => Lava::textStyle(array(
-                                'color' => '#DDAA88',
-                                'fontName' => 'Arial Bold',
-                                'fontName' => 'Arial Bold',
-                                'fontSize' => 10
-                            )),
-
-                        'titleTextStyle' => Lava::textStyle(array(
-                                'color' => '#5C6DAB',
-                                'fontSize' => 14
-                            )),
-                    ))
             );
-            Lava::AreaChart($chbchart)->setConfig($config_chb_amount);
-        }
-        //Currency
+
+            Lava::AreaChart('Chargebacks')->setConfig($config_chb);
+
+
+            //Amounts
+            /**** Currency ****/
+            foreach($allcurrencies as $currency)
+            {
+                $chb_amount = $this->getChargebacksamount($currency->currency, $date_from, $date_to);
+
+                $chbchart = 'chb_'.$currency->currency;
+
+                $chbamountTable = Lava::DataTable($chbchart);
+
+                $chbamountTable->addColumn('string', 'Merchant agreement');
+                $chbamountTable->addColumn('number', 'CHB amount');
+
+                foreach($chb_amount as $chbamount)
+                {
+                    foreach($chbamount as $chba)
+                    {
+                        $data_chba[0] = $chba->name;
+                        $data_chba[1] = $chba->totalchb;
+
+                        $chbamountTable->addRow($data_chba);
+                    }
+                }
+
+
+
+                $config_chb_amount = array(
+
+                    'colors' => array('teal'),
+                    'hAxis' => Lava::hAxis(array(
+                            'baselineColor' => '#fc32b0',
+
+
+                            'textPosition' => 'out',
+                            'textStyle' => Lava::textStyle(array(
+                                    'color' => '#DDAA88',
+                                    'fontSize' => 10
+                                )),
+                            'slantedText' => TRUE,
+                            'slantedTextAngle' => 30,
+
+
+                        )),
+                    'vAxis' => Lava::vAxis(array(
+
+                            'textPosition' => 'out',
+                            'textStyle' => Lava::textStyle(array(
+                                    'color' => '#DDAA88',
+                                    'fontName' => 'Arial Bold',
+                                    'fontName' => 'Arial Bold',
+                                    'fontSize' => 10
+                                )),
+
+                            'titleTextStyle' => Lava::textStyle(array(
+                                    'color' => '#5C6DAB',
+                                    'fontSize' => 14
+                                )),
+                        ))
+                );
+                Lava::AreaChart($chbchart)->setConfig($config_chb_amount);
+            }
+            //Currency
 
 
 
@@ -440,30 +440,30 @@ class DashboardController extends AdminController {
 
 
 
-		// Show the View
-		$view =  View::make('backend/dashboard',array(
-            'paid_invoices' => $paid_invoices,
-            'overdue_invoices' => $overdue_invoices,
-            'payments' => $payments,
-            'ppaid_invoices' => $ppaid_invoices,
-            'new_invoices' => $new_invoices,
-            'paid' => $paid,
-            'unpaid' => $unpaid,
-            'tobepaid' => $tobepaid,
-            'total' => $total,
-            'recentpayments' => $recentpayments,
-            'allcurrencies' => $allcurrencies,
-            'transactions' => $transactions,
-            'refunds' => $refunds,
-            'chbs' => $chbs,
-            'num_tobepaid' => $num_tobepaid,
-            'num_overdue' => $num_overdue
+            // Show the View
+            $view =  View::make('backend/dashboard',array(
+                'paid_invoices' => $paid_invoices,
+                'overdue_invoices' => $overdue_invoices,
+                'payments' => $payments,
+                'ppaid_invoices' => $ppaid_invoices,
+                'new_invoices' => $new_invoices,
+                'paid' => $paid,
+                'unpaid' => $unpaid,
+                'tobepaid' => $tobepaid,
+                'total' => $total,
+                'recentpayments' => $recentpayments,
+                'allcurrencies' => $allcurrencies,
+                'transactions' => $transactions,
+                'refunds' => $refunds,
+                'chbs' => $chbs,
+                'num_tobepaid' => $num_tobepaid,
+                'num_overdue' => $num_overdue
 
-        ));
+            ));
 
             return $view;
 
-	} //Admin Groups
+        } //Admin Groups
 
         /*-- =========================================
                         MERCHANT GROUPS
@@ -481,12 +481,12 @@ class DashboardController extends AdminController {
 
             }
             else
-            if($user->merchantagreement_id >0)
-            {
-                $ma = Merchantagreement::where('id','=',$user->merchantagreement_id)->get();
+                if($user->merchantagreement_id >0)
+                {
+                    $ma = Merchantagreement::where('id','=',$user->merchantagreement_id)->get();
 
 
-            }
+                }
 
             $agreements = array();
 
@@ -527,8 +527,8 @@ class DashboardController extends AdminController {
             //$tobepaid = Mainvoice::bystatus(2)->whereIn('mainvoice.merchantagreement_id',$agreements)->limit(3)->get();
 
 
-         /*   $num_tobepaid = Mainvoice::where('payout_date','=',date("Y-m-d 00:00:00"))->orWhere('payout_date','=',date("Y-m-d 23:59:59"))
-                ->whereIn('mainvoice.merchantagreement_id',$agreements)->count();*/
+            /*   $num_tobepaid = Mainvoice::where('payout_date','=',date("Y-m-d 00:00:00"))->orWhere('payout_date','=',date("Y-m-d 23:59:59"))
+                   ->whereIn('mainvoice.merchantagreement_id',$agreements)->count();*/
 
 
 
@@ -540,7 +540,7 @@ class DashboardController extends AdminController {
                 ->limit(3)
                 ->get();
 
-           // $ppaid_invoices = Mainvoice::bystatus(4)->bymerchant(Sentry::getUser()->merchant_id)->limit(3)->get();
+            // $ppaid_invoices = Mainvoice::bystatus(4)->bymerchant(Sentry::getUser()->merchant_id)->limit(3)->get();
 
             foreach($ppaid_invoices as $ppi)
             {
@@ -576,9 +576,9 @@ class DashboardController extends AdminController {
             /*-- ======================================================================
                            MERCHANT Values per merchant agreement Graphs last 10 days
             ========================================================================== --*/
-                /**************************************
-                               Daily values
-                **************************************/
+            /**************************************
+            Daily values
+             **************************************/
 
             //////Transactions
 
@@ -1252,7 +1252,7 @@ class DashboardController extends AdminController {
         {
             $query .= ' AND merchantagreement.id = '.$merchantagreementID.' ';
         }
-            $query .= 'GROUP BY name';
+        $query .= 'GROUP BY name';
 
 
         $transactions = DB::select(DB::raw($query));
@@ -1286,7 +1286,7 @@ class DashboardController extends AdminController {
             $query_amount .= '  AND merchantagreement.id = '. $merchantagreementID.'
                  ';
         }
-            $query_amount .= ' GROUP BY merchantagreement.id';
+        $query_amount .= ' GROUP BY merchantagreement.name';
 
         $transactions_amount = DB::select(DB::raw($query_amount));
 
@@ -1299,27 +1299,27 @@ class DashboardController extends AdminController {
     }
 
 
-   /* public function getRedemptions($merchantID, $date_from, $date_to)
-    {
-        ///@todo: Replace with data from voucher
-        $numredemptions = Voucherevent::where('merchant_id','=',$merchantID)
-            ->where('event_id','=', 403)
-            ->where('datetimecreated','>=',$date_from)
-            ->where('datetimecreated','<=',$date_to)
-            ->count();
+    /* public function getRedemptions($merchantID, $date_from, $date_to)
+     {
+         ///@todo: Replace with data from voucher
+         $numredemptions = Voucherevent::where('merchant_id','=',$merchantID)
+             ->where('event_id','=', 403)
+             ->where('datetimecreated','>=',$date_from)
+             ->where('datetimecreated','<=',$date_to)
+             ->count();
 
-        $amountredemptions = Voucherevent::where('merchant_id','=',$merchantID)
-            ->where('event_id','=', 403)
-            ->where('datetimecreated','>=',$date_from)
-            ->where('datetimecreated','<=',$date_to)
-            ->sum('amount');
+         $amountredemptions = Voucherevent::where('merchant_id','=',$merchantID)
+             ->where('event_id','=', 403)
+             ->where('datetimecreated','>=',$date_from)
+             ->where('datetimecreated','<=',$date_to)
+             ->sum('amount');
 
-        return array(
-            'numredemptions'    => $numredemptions,
-            'amountredemptions' => $amountredemptions
-        );
+         return array(
+             'numredemptions'    => $numredemptions,
+             'amountredemptions' => $amountredemptions
+         );
 
-    }*/
+     }*/
 
 
     public function getRefunds($date_from, $date_to, $merchantID=null, $merchantagreementID=null)
@@ -1344,7 +1344,7 @@ class DashboardController extends AdminController {
             $query .= '  AND merchantagreement.id = '. $merchantagreementID.'
                 ';
         }
-            $query .= 'GROUP BY merchantagreement.id';
+        $query .= 'GROUP BY merchantagreement.name';
 
 
         $refunds = DB::select(DB::raw($query));
@@ -1379,7 +1379,7 @@ class DashboardController extends AdminController {
             $query_amount .= '  AND merchantagreement.merchant_id = '. $merchantagreementID.'
                   ';
         }
-            $query_amount .= ' GROUP BY merchantagreement.id';
+        $query_amount .= ' GROUP BY merchantagreement.name';
 
         $refunds_amount = DB::select(DB::raw($query_amount));
 
@@ -1413,7 +1413,7 @@ class DashboardController extends AdminController {
 
             $query .= ' AND merchantagreement.id = '.$merchantagreementID.' ';
         }
-            $query .= ' GROUP BY merchantagreement.id';
+        $query .= ' GROUP BY merchantagreement.name';
 
 
 
@@ -1438,14 +1438,14 @@ class DashboardController extends AdminController {
 
         if(!is_null($merchantID))
         {
-        $query_amount .= '  AND merchantagreement.merchant_id = '.$merchantID.'';
+            $query_amount .= '  AND merchantagreement.merchant_id = '.$merchantID.'';
         }
 
         if(!is_null($merchantagreementID))
         {
             $query_amount .= '  AND merchantagreement.id = '.$merchantagreementID.'';
         }
-            $query_amount .= 'GROUP BY merchantagreement.id';
+        $query_amount .= 'GROUP BY merchantagreement.name';
 
         $chb_amount = DB::select(DB::raw($query_amount));
 
@@ -1461,9 +1461,9 @@ class DashboardController extends AdminController {
 
     }
 
-              /*-- =========================================
-                             Daily values
-              =========================================== --*/
+    /*-- =========================================
+                   Daily values
+    =========================================== --*/
 
     //transactions
 
@@ -1490,7 +1490,7 @@ class DashboardController extends AdminController {
         {
             $query .= ' AND merchantagreement.id = '.$merchantagreementID.' ';
         }
-            $query .= 'GROUP BY transactiondate, merchantagreement.name';
+        $query .= 'GROUP BY transactiondate, merchantagreement.name';
 
         $transactions = DB::select(DB::raw($query));
 
@@ -1560,7 +1560,7 @@ class DashboardController extends AdminController {
 
             $query .= ' AND merchantagreement.id = '.$merchantagreementID.'';
         }
-            $query .= ' GROUP BY merchantagreement.id, chbdate';
+        $query .= ' GROUP BY merchantagreement.name, chbdate';
 
 
         $chb = DB::select(DB::raw($query));
@@ -1591,7 +1591,7 @@ class DashboardController extends AdminController {
         {
             $query_amount .= ' AND merchantagreement.id = '.$merchantagreementID.'';
         }
-            $query_amount .= ' GROUP BY merchantagreement.id, chbdate';
+        $query_amount .= ' GROUP BY merchantagreement.name, chbdate';
 
         $chb_amount = DB::select(DB::raw($query_amount));
 
@@ -1627,7 +1627,7 @@ class DashboardController extends AdminController {
 
             $query .= ' AND merchantagreement.id = '. $merchantagreementID.'';
         }
-            $query .= 'GROUP BY refunddate, merchantagreement.name';
+        $query .= 'GROUP BY refunddate, merchantagreement.name';
 
 
         $refunds = DB::select(DB::raw($query));
@@ -1653,7 +1653,7 @@ class DashboardController extends AdminController {
 
             $query_amount .= ' AND merchantagreement.merchant_id = '. $merchantID.'';
         }
-            $query_amount .= 'GROUP BY refunddate, merchantagreement.name';
+        $query_amount .= 'GROUP BY refunddate, merchantagreement.name';
 
         $refunds_amount = DB::select(DB::raw($query_amount));
 

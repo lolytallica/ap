@@ -432,6 +432,12 @@ function fieldval($report, $fieldname)
             $fieldval = sec2time(strtotime($report->purchased) - strtotime($report->datetimecreated)) ;
             break;
         }
+        case 'cnt':
+        case 'percent':
+        {
+            $fieldval = '';
+            break;
+        }
         default:
             {
             $fieldval  = $report->$fieldname;
@@ -441,9 +447,34 @@ function fieldval($report, $fieldname)
     return $fieldval;
 }
 
-function reportresultsfields($reporttypeID)
+function reportresultsfields($reporttypeID, $status)
 {
-    $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')->orderby('fieldorder')->get();
+    if($status == 'summary')
+    {
+        $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')
+            ->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')->orderby('fieldorder')
+            ->whereIn('summary',array('1','2'))
+            ->get();
+    }
+    else
+    {
+    $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')
+        ->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')
+        ->whereIn('summary',array('0','2'))
+        ->orderby('fieldorder')
+        ->get();
+    }
+
+//    var_dump($resultfields); exit;
+    return $resultfields;
+}
+
+function summaryresultsfields($reporttypeID)
+{
+    $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')
+        ->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')->orderby('fieldorder')
+        ->whereIn('summary',array('1','2'))
+        ->get();
 
     return $resultfields;
 }

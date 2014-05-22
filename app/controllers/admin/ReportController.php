@@ -63,28 +63,30 @@ class ReportController extends AdminController {
            // return Redirect::to();
         }
 
-        $reptype = Reporttype::join('report_search_fields','search_types.id','=','report_search_fields.reporttype_id')->where('report_search_fields.reportsearch_id','=',$reportsearchID)->first();
 
-        $reporttypeID = $reptype->reporttype_id; //echo $reporttypeID; exit;
 
 
         //var_dump(json_encode($statuses)); exit;
 
         $reportsearch = Reportsearch::find($reportsearchID);
 
-
+     //   var_dump($reportsearch->formfields()); exit;
 
         if(Session::get('reporttypeID'))
         {
             $reporttypeID = Session::get('reporttypeID');
         }
 
+        $reptype = Reporttype::join('report_search_fields','search_types.id','=','report_search_fields.reporttype_id')->where('report_search_fields.reportsearch_id','=',$reportsearchID)->first();
+
+        $reporttypeID = $reptype->reporttype_id; //echo $reporttypeID; exit;
+
 
         $searchform = Reportsearch::find($reportsearchID);
 
         $formfields = Searchfields::join('report_search_fields','search_fields.id','=','report_search_fields.searchfields_id')
             ->where('reportsearch_id','=',$reportsearchID)
-            //->where('reporttype_id','=',$reporttypeID)
+            ->where('search_fields.additional','=','0')
             ->select('search_fields.id','search_fields.fieldname','search_fields.fieldtype', 'search_fields.fielddescription', 'report_search_fields.reportsearch_id','report_search_fields.reporttype_id','search_fields.data_validation','search_fields.data_validation_condition')
             ->orderBy('reportsearch_id')
             ->orderBy('reporttype_id')
@@ -93,6 +95,8 @@ class ReportController extends AdminController {
 
        // $formfields = $searchform->searchfields();
         $ff = $formfields->toArray();
+
+        $additionalfields = $reportsearch->additionalfields();
 
         $allreporttypes = Reporttype::all();
 
@@ -124,7 +128,8 @@ class ReportController extends AdminController {
             ->with('reports',$allreportforms)
             ->with('ffields',$formfields)
             ->with('formfields',json_encode($formfields))   //form fields by report type
-           // ->with('resultfields',$rf)
+            ->with('additionalfields',$additionalfields)   //form additional fields
+
             ->with('merchantlist',json_encode($merchants)) //merchants for dropdowns
             ->with('merchants',$merchant)
             ->with('merchantagreementlist',json_encode($merchantagreements)) //ma for added dropdown
@@ -145,30 +150,6 @@ class ReportController extends AdminController {
 
     public function reportStatuses()
     {
-
-      /*  switch($reporttype)
-        {
-            case 'redemptions':{
-                $statuses = DB::table('event')->whereIn('id', array('403','406','491'))->orderBy('id')->select('id','event')->get();
-                                   break;
-
-            }
-            case 'customers':
-            case 'orders':{
-                $status_query = 'select distinct "event".id, "event".event from "event" join "order" on "event".id = "order".status_id order by event.id';
-                $statuses = DB::select(DB::raw($status_query));
-                break;
-            }
-            case 'transactions':{
-                $status_query = 'select distinct "event".id, "event".event from "event" join "transaction" on "event".id = "transaction".status_id order by event.id';
-
-                $statuses = DB::select(DB::raw($status_query));
-            }
-
-            return $statuses;
-
-        }*/
-
 
         $allstatuses = array();
             //Orders, Customers
@@ -225,6 +206,7 @@ class ReportController extends AdminController {
         else
         if(Input::has('saveform'))
         {
+           // var_dump($searchfields); exit;
             return $this->saveReportsearch($searchfields);
         }
     }
@@ -261,9 +243,10 @@ class ReportController extends AdminController {
                 $results = $this->searchRedemptions($searchfields);
                 break;
             }
-            case 'shopTransactions':
+            case 'shoptransactions':
             {
                 $results = $this->searchShoptransactions($searchfields);
+
                 break;
             }
             case 'validationrequests':
@@ -291,9 +274,6 @@ class ReportController extends AdminController {
 
     public function saveReportsearch($searchfields)
     {
-        //echo 'save modal';
-
-
 
         $validator = Validator::make($searchfields, $this->formRules);
 
@@ -315,7 +295,7 @@ class ReportController extends AdminController {
         $fields_saved=0;
         foreach($searchfields as $key => $val)
         {
-            if($val && !in_array($key, $excluded_fields) )
+            if(($val && !in_array($key, $excluded_fields))   )
             {
                 $sf = Searchfields::byname($key)->first();
 
@@ -418,7 +398,7 @@ class ReportController extends AdminController {
             ->get(); */
 
         /*@TODO: GET dynamically from table*/
-        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform');
+        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform', 'status', 'status_id');
 
         $date_from = $searchfields['date_from'];
         $date_to   = $searchfields['date_to'];
@@ -431,8 +411,13 @@ class ReportController extends AdminController {
         foreach($searchfields as $key => $val)
         {
             if($val && !in_array($key, $excluded_fields) )
-            {if($key=='status') $key = 'event_id';
+            {
             $query .= ' AND "'.$key.'" = '."'".$val."'".' ';
+            }
+            if(($key=='status' || $key=='status_id') && !in_array($val, array('summary','all','0')) )
+            {
+                $key = 'event.id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
             }
         }
 
@@ -457,7 +442,7 @@ class ReportController extends AdminController {
         $postfields = array();
 
         /*@TODO: GET dynamically from table*/
-        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform');
+        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform', 'status', 'status_id');
 
         $date_from = $searchfields['date_from'];
         $date_to   = $searchfields['date_to'];
@@ -474,7 +459,11 @@ class ReportController extends AdminController {
         {
             if($val && !in_array($key, $excluded_fields) )
             {
-                if($key=='status') $key = 'event.id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+            if( ($key=='status' || $key='status_id') && !in_array($val, array('summary','all','0')) )
+            {
+                $key = 'event.id';
                 $query .= ' AND '.$key.' = '."'".$val."'".' ';
             }
         }
@@ -493,7 +482,41 @@ class ReportController extends AdminController {
 
     public function searchShoptransactions($searchfields)
     {
+        $postfields = array();
 
+        /*@TODO: GET dynamically from table*/
+        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform', 'status', 'status_id');
+
+        $date_from = $searchfields['date_from'];
+        $date_to   = $searchfields['date_to'];
+
+        $query = 'SELECT merchant.abbreviation as merchant, transaction.id AS transaction_id, transaction.firstname, "transaction".lastname, "transaction".merchantusername, transaction.merchantprofile, transaction.ipaddress, transaction.status_id AS event_id, event.event, transaction.datetimecreated
+                  FROM transaction JOIN "order" ON "order".transaction_id = transaction.id JOIN merchant ON transaction.merchant_id = merchant.id JOIN event ON transaction.status_id = event.id
+                  WHERE transaction.datetimecreated>='."'".$date_from."'".' ';
+
+        if($searchfields['date_to'])
+        {
+            $query .= ' AND transaction.datetimecreated<= '."'".$date_to."'".' ';
+        }
+        foreach($searchfields as $key => $val)
+        {
+            if($val && !in_array($key, $excluded_fields) )
+            {
+                if($key=='status') $key = 'event.id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+            if($key=='status' && !in_array($val, array('summary','all','0')) )
+            {
+                $key = 'event.id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+        }
+
+        $transactions = DB::select(DB::raw($query));
+
+        return array(
+            'transactions'   => $transactions
+        );
     }
 
     public function getShoptransactionDetails()
@@ -511,7 +534,7 @@ class ReportController extends AdminController {
         $postfields = array();
 
         /*@TODO: GET dynamically from table*/
-        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform');
+        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform', 'status', 'status_id');
 
         $date_from = $searchfields['date_from'];
         $date_to   = $searchfields['date_to'];
@@ -528,14 +551,16 @@ class ReportController extends AdminController {
         {
             if($val && !in_array($key, $excluded_fields) )
             {
-                if($key=='status') $key = 'event.id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+            if( ($key=='status' || $key =='status_id') && !in_array($val, array('summary','all','0')) )
+            {
+                $key = 'event.id';
                 $query .= ' AND '.$key.' = '."'".$val."'".' ';
             }
         }
 
-     // $query = 'SELECT transaction.email, COUNT(transaction.id) AS ordercount FROM transaction WHERE transaction.datetimecreated>='."'".$date_from."'".' ';
-
-       // echo $query; exit;
+      //  echo $query; exit;
 
         $customers = DB::select(DB::raw($query));
 
@@ -555,13 +580,15 @@ class ReportController extends AdminController {
     {
         ///Transaction table columns
 
-        $searchoptions = array();
+      /*  $searchoptions = array();
 
-        $sql = "select column_name from information_schema.columns where table_name='transaction' ";
+        $sql = "select column_name from information_schema.columns where table_name='transaction' order by columns";
 
-        $search = DB::select(DB::raw($sql));
+        $search = DB::select(DB::raw($sql)); */
 
-        foreach($search as $sf)
+
+
+   /*     foreach($search as $sf)
         {
             foreach($sf as $searchfield)
             {
@@ -573,7 +600,14 @@ class ReportController extends AdminController {
         $searchoptions['merchant'] = 'merchant';
 
         sort($searchoptions);
-        return $searchoptions;
+        return $searchoptions;*/
+
+        $sf = Searchfields::where('additional','=','1')
+            ->orderBy('fieldorder')
+            ->get();
+
+        return $sf;
+
     }
 
 

@@ -90,7 +90,18 @@ Reports ::
                         </h4>
                     </div>
 
+                    <?php
 
+                    /*@todo: get all from same json*/
+
+                    $redemptions_statuses = json_encode(reportStatuses('1'));
+                    $order_statuses = json_encode(reportStatuses('2'));
+                    $transaction_statuses = json_encode(reportStatuses('3'));
+                    $validation_statuses = json_encode(reportStatuses('4'));
+
+                  //  var_dump($ffields); exit;
+
+                    ?>
                     <div class="controls pull-right span4">
                         <table class="table table-responsive"><tr><td>
 
@@ -109,7 +120,7 @@ Reports ::
                         <select id="searchField" data-form="select2" style="width:200px" data-placeholder="Select field name">
                             <option value="select" selected>-- add search fields --</option>
                             @foreach($fields as $searchfield)
-                            <option value="{{$searchfield}}">{{ucwords($searchfield)}}</option>
+                            <option value="{{$searchfield->fieldname}}">{{ucwords($searchfield->fielddescription)}}</option>
                             @endforeach
                         </select>
                             </td><td><button id="addSearchField" name="addSearchField" type="button" class="btn btn-small btn-info addSearchField"><i class="icon-plus-sign icon-white"></i>  </button>
@@ -146,10 +157,10 @@ Reports ::
 
                                                 <label class="control-label" for="inputSelect">Search </label>
                                                 <div class="controls">
-                                                    <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType">
+                                                    <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType" {{(($reportsearchID>1)? 'disabled="disabled"':'')}}>
                                                         <option value="select" selected>--- Select report ---</option>
                                                         @foreach($reporttypes as $reptype)
-                                                        <option value="{{$reptype->id}}">{{ucwords($reptype->description)}}</option>
+                                                        <option value="{{$reptype->id}}" {{(($reportsearchID>1 && $reporttypeID == $reptype->id)? 'selected disabled="disabled"':'')}} >{{ucwords($reptype->description)}}</option>
                                                         @endforeach
                                                     </select>
 
@@ -172,6 +183,37 @@ Reports ::
                                         <div class="box-body">
                                                 <table id="formFields" class="table " style="vertical-align: top">
                                                 <!---- Dynamic Form from js -->
+                                                    @if($reportsearchID>1)
+                                                    @foreach($ffields as $field)
+                                                    <tr><td>
+                                                            {{ucwords($field->fielddescription)}}</td>
+                                                        <td>
+                                                            @if($field->fieldname =='merchant' || $field->fieldname=='merchant_id')
+                                                            <select>
+                                                                <option value="0" selected>All</option>
+                                                                @foreach($merchants as $merchant)
+                                                                <option value="{{$merchant->id}}">{{$merchant->merchant}}</option>
+                                                                @endforeach
+                                                                </select>
+
+                                                            @elseif($field->fieldname=='date_from' || $field->fieldname=='date_to')
+                                                            <a href="javascript:void(0);" class="clickdate"><div class="input-append date" data-form="datepicker" data-date="" data-date-format="yyyy-mm-dd" id="{{$field->fieldname}}"> <input id="{{$field->fieldname}}" name="{{$field->fieldname}}" class="grd-white" data-form="" size="16" type="text" value="" data-validation="{{$field->data_validation}}" data-validation-format="{{$field->data_validation_condition}}" > <span class="add-on"><i class="icon-th"></i></span> </div></a>
+
+                                                            @elseif($field->fieldname =='status')
+                                                            <select>
+                                                                <option value="0" selected>All</option>
+                                                                @foreach(reportStatuses($reporttypeID) as $repstatus)
+                                                                <option value="{{$repstatus->id}}">{{$repstatus->id .' '.$repstatus->event}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @else
+                                                            <input type="text" class="grd-white" id="{{$field->fieldname}}" name="{{$field->fieldname}}" value="" placeholder="" data-validation = "{{$field->data_validation}}" data-validation-optional="true" />
+                                                            @endif
+
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    @endif
                                                 </table>
 
                                         </div>
@@ -191,6 +233,42 @@ Reports ::
                                         <div class="box-body">
                                                 <table id="searchFields" class="table " style="vertical-align: top">
                                                 <!----- Dynamic Fields from js -->
+
+                                                    @if($reportsearchID>1 && @count($additionalfields))
+                                                    @foreach($additionalfields as $afield)
+                                                    <tr><td>
+                                                            {{ucwords($afield->fielddescription)}}</td>
+                                                        <td>
+                                                            @if($afield->fieldname =='merchant' || $afield->fieldname=='merchant_id')
+                                                            <select>
+                                                                @foreach($merchants as $merchant)
+                                                                <option value="{{$merchant->id}}" data-validation-optional="true">{{$merchant->merchant}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @elseif($afield->fieldname =='merchantagreement')
+                                                            <select>
+                                                                @foreach($merchantagreements as $merchantagreement)
+                                                                <option value="{{$merchantagreement->id}}" data-validation-optional="true">{{$merchantagreement->name}}</option>
+                                                                @endforeach
+                                                            </select>
+
+                                                            @elseif($afield->fieldname=='merchantcreateddate' || $afield->fieldname=='validateddatetime')
+                                                            <a href="javascript:void(0);" class="clickdate"><div class="input-append date" data-form="datepicker" data-date="" data-date-format="yyyy-mm-dd" id="{{$afield->fieldname}}"> <input id="{{$afield->fieldname}}" name="{{$afield->fieldname}}" class="grd-white" data-form="" size="16" type="text" value="" data-validation="{{$afield->data_validation}}" data-validation-format="{{$afield->data_validation_condition}}" > <span class="add-on"><i class="icon-th"></i></span> </div></a>
+                                                            @elseif($afield->fieldname =='status' || $afield->fieldname =='status_id')
+                                                            <select>
+                                                                <option value="0" selected>All</option>
+                                                                @foreach(reportStatuses($reporttypeID) as $repstatus)
+                                                                <option value="{{$repstatus->id}}">{{$repstatus->id .' '.$repstatus->event}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @else
+                                                            <input type="text" class="grd-white" id="{{$afield->fieldname}}" name="{{$afield->fieldname}}" value="" placeholder="" data-validation = "{{$afield->data_validation}}" data-validation-optional="true" />
+                                                            @endif
+
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                    @endif
                                                 </table>
                                         </div>
                                     </div>
@@ -253,7 +331,8 @@ Reports ::
                             $results      = Session::get('results');
 
                             if(@$searchfields['reportType'])
-                            $resultfields = reportresultsfields($searchfields['reportType']);
+
+                            $resultfields = reportresultsfields($searchfields['reportType'],$searchfields['status']);
                             ?>
 
                             @if(@count($searchfields))
