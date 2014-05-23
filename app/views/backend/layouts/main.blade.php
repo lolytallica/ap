@@ -409,6 +409,8 @@
 
             var merchants = '{{ $merchantlist }}' ;
 
+            var statuses = '';
+
 
 
             ///Enable save form when report type is selected
@@ -478,7 +480,7 @@
                         formfields += '<tr><td>'+ffield.fielddescription+'</td><td><select id="'+ ffield.fieldname +'" name="'+ffield.fieldname+'" data-form="select2" style="width:200px" data-placeholder="Select Status">';
 
                         formfields += '<option value="all" selected>All</option>';
-                        formfields += '<option value="summary" selected>Summary</option>';
+                        formfields += '<option value="summary">Summary</option>';
 
                         $.each($.parseJSON(statuses), function(x, status) {
 
@@ -540,6 +542,7 @@
 
             var merchants = '{{ $merchantlist }}' ;
             var merchantagreements = '{{ $merchantagreementlist }}' ;
+            var allcurrencies = '{{ allcurrencies() }}' ;
 
 
 
@@ -548,9 +551,26 @@
 
                 addedSearchField = '<select id="'+$('#searchField').val()+'" name="'+$('#searchField').val()+'" data-form="select2" style="width:150px" data-placeholder="Select merchant">';
 
+                    addedSearchField += '<option value="0" selected>All</option>';
                 $.each($.parseJSON(merchants), function(x, merchantname) {
 
-                    addedSearchField += '<option value="'+ merchantname.id +'" selected>'+ merchantname.merchant +'</option>';
+                    addedSearchField += '<option value="'+ merchantname.id +'" >'+ merchantname.merchant +'</option>';
+
+                });
+
+                addedSearchField += '</select>';
+
+            }
+            else
+            if($('#searchField').val() === 'currency')
+            {
+
+                addedSearchField = '<select id="'+$('#searchField').val()+'" name="'+$('#searchField').val()+'" data-form="select2" style="width:150px" data-placeholder="Select merchant">';
+
+                addedSearchField += '<option value="all" selected>All</option>';
+                $.each($.parseJSON(allcurrencies), function(x, currency) {
+
+                    addedSearchField += '<option value="'+ currency.currency +'" >'+ currency.currency +'</option>';
 
                 });
 
@@ -561,10 +581,11 @@
             if($('#searchField').val() === 'merchantagreement')
             {
                 addedSearchField = '<select id="'+$('#searchField').val()+'" name="'+$('#searchField').val()+'" data-form="select2" style="width:150px" data-placeholder="Select merchantagreement" >';
+                addedSearchField += '<option value="0" selected>All</option>';
 
                 $.each($.parseJSON(merchantagreements), function(x, ma) {
 
-                    addedSearchField += '<option value="'+ ma.id +'" selected>'+ ma.name +'</option>';
+                    addedSearchField += '<option value="'+ ma.id +'" >'+ ma.name +'</option>';
 
                 });
 
@@ -582,16 +603,69 @@
 
             }
             else
+            if($('#searchField').val() == 'status' || $('#searchField').val() == 'status_id')
+            {
+                if($('#status').length > 0)
+                {
+                    alert('Status already added.'); exit;
+                }
+                else
+                {
+                var statuses = '';
+                var reporttypeID = $("#reportType").val();
+
+                switch(reporttypeID){
+                    case '1':
+                    {
+                        statuses = '{{ @$redemptions_statuses}}'; break;
+                    }
+                    case '2':
+                    case '5':
+                    {
+                        statuses = '{{ @$order_statuses}}'; break;
+                    }
+                    case '3':
+                    {
+                        statuses = '{{ @$transaction_statuses}}'; break;
+                    }
+                    case '4':
+                    {
+                        statuses = '{{ @$validation_statuses}}'; break;
+                    }
+                }
+
+                  if(!reporttypeID || reporttypeID =='select')
+                  { alert('Please select a report type before adding fields');}
+
+                addedSearchField = '<select id="'+$('#searchField').val()+'" name="'+$('#searchField').val()+'" data-form="select2" style="width:150px" data-placeholder="Select Status" >';
+
+                addedSearchField += '<option value="all" selected>All</option>';
+                addedSearchField += '<option value="summary">Summary</option>';
+
+                $.each($.parseJSON(statuses), function(x, status) {
+
+
+                    addedSearchField += '<option value="'+ status.id +'" >'+status.id+' '+ status.event +'</option>';
+
+                });
+
+                addedSearchField += '</select></td></tr>';
+                }
+            }
+
+            else
             {
                 var dataValidation = '';
+                var dataValidationRegexp = '';
 
                 switch($('#searchField').val())
                 {
-                    case 'status_id':
+                  //  case 'status_id':
                     case 'order_id':
                     case 'merchant_id':
                     case 'product_id':
                     case 'pspaccount_id' :
+                    case 'validationid' :
                     {
                         dataValidation = 'number';
                         break;
@@ -601,13 +675,19 @@
                         dataValidation = 'email';
                         break;
                     }
+                    case 'ipaddress':
+                    {
+                        dataValidation = 'custom';
+                        dataValidationRegexp = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"; //Ip validation
+
+                    }
                     default:
                     {
                         dataValidation = 'required';
                     }
                 }
 
-                addedSearchField = '<input type="text" class="grd-white" id="'+ $('#searchField').val() +'" name="'+ $('#searchField').val() +'" value="" placeholder="" data-validation = "'+dataValidation+'" />';
+                addedSearchField = '<input type="text" class="grd-white" id="'+ $('#searchField').val() +'" name="'+ $('#searchField').val() +'" value="" placeholder="" data-validation = "'+dataValidation+'" data-validation-regexp= "'+dataValidationRegexp+'" />';
             }
 
             if($('#searchField').val() === 'select')
@@ -615,7 +695,7 @@
                 alert('Please select a field');
             }
             else
-            if ($('#'+searchFieldName).length == 0){
+            if ($('#'+searchFieldName).length == 0 && $('#'+searchFieldName).length == 0 ){
             $("#searchFields").append('<tr><td>' + searchFieldName + '</td><td>'+ addedSearchField +' &nbsp; </td><td><a href="javascript:void(0);" class="remSF"><button id="removeSearchField" name="removeSearchField" type="button" class="btn btn-small btn-danger removeSearchField"><i class="icon-minus-sign icon-white"></i>  </button></a>  </td></tr>');
             }
             else

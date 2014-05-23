@@ -7,6 +7,7 @@ use Cache;
 use Transactionorder;
 use Resultfields;
 use Reporttype;
+use Currency;
 use DB;
 
                             /*===========================================
@@ -279,6 +280,33 @@ function update_cache()
 
 }
 
+function allcurrencies()
+{
+    if(Sentry::getUser()->merchant_id>0)
+    {
+        $allcurrencies = Transactionorder::join('transaction','order.transaction_id','=','transaction.id')
+            ->where('transaction.merchant_id','=',Sentry::getUser()->merchant_id)
+            ->select('order.currency')
+            ->distinct()
+            ->get();
+    }
+    else
+        if(Sentry::getUser()->merchantagreement_id>0)
+        {
+            $allcurrencies = Transactionorder::join('transaction','order.transaction_id','=','transaction.id')
+                ->join('merchantagreement','transaction.merchant_id','=','merchantagreement.merchant_id')
+                ->where('merchantagreement.id','=',Sentry::getUser()->merchantagreement_id)
+                ->select('order.currency')
+                ->distinct()
+                ->get();
+        }
+        else{
+            $allcurrencies = Transactionorder::select('currency')->distinct()->get();
+        }
+
+    return $allcurrencies;
+}
+
 /*===========================================
                        User Actions
     =============================================*/
@@ -354,6 +382,13 @@ function reporttitle($searchfields)
 }
 /////////////
 
+function currencylist()
+{
+
+}
+
+////
+
 function reportStatuses($reporttypeID)
 {
 
@@ -368,9 +403,11 @@ function reportStatuses($reporttypeID)
         {
             //$statuses = report_api_call('shop', 'statuses/order');
 
-            $status_query = 'select distinct "event".id, "event".event from "event" join "order" on "event".id = "order".status_id order by event.id';
+           // $status_query = 'select distinct "event".id, "event".event from "event" join "order" on "event".id = "order".status_id order by event.id';
 
-            $statuses = DB::select(DB::raw($status_query));
+            $statuses = DB::table('event')->whereIn('id', array('305','403','901'))->orderBy('id')->get();
+
+            //$statuses = DB::select(DB::raw($status_query));
 
             break;
         }
@@ -378,7 +415,7 @@ function reportStatuses($reporttypeID)
         {
             // $statuses = report_api_call('voucher', 'statuses/voucher_event');
 
-            $statuses = DB::table('event')->whereIn('id', array('403','406','491'))->orderBy('id')->get();
+            $statuses = DB::table('event')->whereIn('id', array('403'))->orderBy('id')->get();
 
             break;
         }
@@ -386,15 +423,19 @@ function reportStatuses($reporttypeID)
         {
             // $statuses = report_api_call('shop', 'statuses/transaction');
 
-            $status_query = 'select distinct "event".id, "event".event from "event" join "transaction" on "event".id = "transaction".status_id order by event.id';
+            //$status_query = 'select distinct "event".id, "event".event from "event" join "transaction" on "event".id = "transaction".status_id order by event.id';
 
-            $statuses = DB::select(DB::raw($status_query));
+            $statuses = DB::table('event')->whereIn('id', array('102','103','105','403','901','908'))->orderBy('id')->get();
+
+            //$statuses = DB::select(DB::raw($status_query));
 
             break;
         }
         case '4':
         {
-            $statuses = '';
+            $statuses = DB::table('event')->whereIn('id', array('91','811','901'))->orderBy('id')->get();
+
+         //   $statuses = DB::select(DB::raw($status_query));
             break;
         }
 
@@ -405,60 +446,33 @@ function reportStatuses($reporttypeID)
 
 ///////////////
 
+/*============== Result Fields ====================*/
 
-function fieldval($report, $fieldname)
+function reportresultsfields($reporttypeID, $status)
 {
-
-    switch($fieldname)
+    if($status == 'summary')
     {
-        case 'firstname':
-        {
-            $fieldval = $report->firstname.' '.$report->lastname;
-            break;
-        }
-        case 'purchased':
-        {
-            $fieldval  = date('F d, Y H.i:s', strtotime($report->$fieldname));
-            break;
-        }
+        $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')
+            ->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')->orderby('fieldorder')
+            ->whereIn('summary',array('1','2'))
+            ->get();
 
-        case 'datetimecreated':
-        {
-            $fieldval  = date('F d, Y H.i:s', strtotime($report->$fieldname));
-            break;
-        }
-        case 'timetaken':
-        {
-            $fieldval = sec2time(strtotime($report->purchased) - strtotime($report->datetimecreated)) ;
-            break;
-        }
-        case 'cnt':
-        case 'percent':
-        {
-            $fieldval = '';
-            break;
-        }
-        default:
-            {
-            $fieldval  = $report->$fieldname;
-            }
+         //var_dump($resultfields); exit;
     }
-
-    return $fieldval;
-}
-
-function reportresultsfields($reporttypeID)
-{
+    else
+    {
     $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')
         ->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')
         ->whereIn('summary',array('0','2'))
         ->orderby('fieldorder')
         ->get();
+    }
 
 
-//    var_dump($resultfields); exit;
     return $resultfields;
 }
+
+
 
 function summaryresultsfields($reporttypeID)
 {
@@ -469,6 +483,52 @@ function summaryresultsfields($reporttypeID)
 
     return $resultfields;
 }
+
+/*============== Result Values ====================*/
+
+function fieldval($report, $fieldname)
+{
+
+    switch($fieldname)
+    {
+        case 'firstname':
+        {
+           @ $fieldval = $report->firstname.' '.$report->lastname;
+            //reporttype = orders? set spokeolookup url
+            break;
+        }
+        case 'purchased':
+        {
+           @ $fieldval  = date('F d, Y H.i:s', strtotime($report->$fieldname));
+            break;
+        }
+
+        case 'datetimecreated':
+        {
+            @ $fieldval  = date('F d, Y H.i:s', strtotime($report->$fieldname));
+            break;
+        }
+        case 'timetaken':
+        {
+            @ $fieldval = sec2time($report->$fieldname) ;
+            break;
+        }
+      //  case 'ordercount':
+        case 'percent':
+       // case 'traceid':
+        {
+            @ $fieldval = ''; //$report->$fieldname;
+            break;
+        }
+        default:
+            {
+           @ $fieldval  = $report->$fieldname;
+            }
+    }
+
+    return $fieldval;
+}
+
 /*===========================================
                         Seconds to time
    ===============================================*/

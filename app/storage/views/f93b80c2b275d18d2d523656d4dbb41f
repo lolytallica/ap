@@ -119,7 +119,7 @@ Reports ::
                         <select id="searchField" data-form="select2" style="width:200px" data-placeholder="Select field name">
                             <option value="select" selected>-- add search fields --</option>
                             <?php foreach($fields as $searchfield): ?>
-                            <option value="<?php echo $searchfield; ?>"><?php echo ucwords($searchfield); ?></option>
+                            <option value="<?php echo $searchfield->fieldname; ?>"><?php echo ucwords($searchfield->fielddescription); ?></option>
                             <?php endforeach; ?>
                         </select>
                             </td><td><button id="addSearchField" name="addSearchField" type="button" class="btn btn-small btn-info addSearchField"><i class="icon-plus-sign icon-white"></i>  </button>
@@ -156,13 +156,16 @@ Reports ::
 
                                                 <label class="control-label" for="inputSelect">Search </label>
                                                 <div class="controls">
-                                                    <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType">
+
+                                                    <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType" <?php echo (($reportsearchID>1)? 'disabled="disabled"':''); ?>>
                                                         <option value="select" selected>--- Select report ---</option>
                                                         <?php foreach($reporttypes as $reptype): ?>
-                                                        <option value="<?php echo $reptype->id; ?>" <?php echo (($reportsearchID>1 && $reporttypeID == $reptype->id)? 'selected':''); ?> ><?php echo ucwords($reptype->description); ?></option>
+                                                        <option value="<?php echo $reptype->id; ?>" <?php echo (($reportsearchID>1 && $reporttypeID == $reptype->id)? 'selected disabled="disabled"':''); ?>   ><?php echo ucwords($reptype->description); ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
-
+                                                    <?php if($reportsearchID>1): ?>
+                                                    <input type="hidden" name="reportType" id="reportType" value="<?php echo $reporttypeID; ?>">
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
 
@@ -189,6 +192,7 @@ Reports ::
                                                         <td>
                                                             <?php if($field->fieldname =='merchant' || $field->fieldname=='merchant_id'): ?>
                                                             <select>
+                                                                <option value="0" selected>All</option>
                                                                 <?php foreach($merchants as $merchant): ?>
                                                                 <option value="<?php echo $merchant->id; ?>"><?php echo $merchant->merchant; ?></option>
                                                                 <?php endforeach; ?>
@@ -197,6 +201,14 @@ Reports ::
                                                             <?php elseif($field->fieldname=='date_from' || $field->fieldname=='date_to'): ?>
                                                             <a href="javascript:void(0);" class="clickdate"><div class="input-append date" data-form="datepicker" data-date="" data-date-format="yyyy-mm-dd" id="<?php echo $field->fieldname; ?>"> <input id="<?php echo $field->fieldname; ?>" name="<?php echo $field->fieldname; ?>" class="grd-white" data-form="" size="16" type="text" value="" data-validation="<?php echo $field->data_validation; ?>" data-validation-format="<?php echo $field->data_validation_condition; ?>" > <span class="add-on"><i class="icon-th"></i></span> </div></a>
 
+                                                            <?php elseif($field->fieldname =='status'): ?>
+                                                            <select name="<?php echo $field->fieldname; ?>" id="<?php echo $field->fieldname; ?>">
+                                                                <option value="all" selected>All</option>
+                                                                <option value="summary">Summary</option>
+                                                                <?php foreach(reportStatuses($reporttypeID) as $repstatus): ?>
+                                                                <option value="<?php echo $repstatus->id; ?>"><?php echo $repstatus->id .' '.$repstatus->event; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
                                                             <?php else: ?>
                                                             <input type="text" class="grd-white" id="<?php echo $field->fieldname; ?>" name="<?php echo $field->fieldname; ?>" value="" placeholder="" data-validation = "<?php echo $field->data_validation; ?>" data-validation-optional="true" />
                                                             <?php endif; ?>
@@ -224,6 +236,42 @@ Reports ::
                                         <div class="box-body">
                                                 <table id="searchFields" class="table " style="vertical-align: top">
                                                 <!----- Dynamic Fields from js -->
+
+                                                    <?php if($reportsearchID>1 && @count($additionalfields)): ?>
+                                                    <?php foreach($additionalfields as $afield): ?>
+                                                    <tr><td>
+                                                            <?php echo ucwords($afield->fielddescription); ?></td>
+                                                        <td>
+                                                            <?php if($afield->fieldname =='merchant' || $afield->fieldname=='merchant_id'): ?>
+                                                            <select>
+                                                                <?php foreach($merchants as $merchant): ?>
+                                                                <option value="<?php echo $merchant->id; ?>" data-validation-optional="true"><?php echo $merchant->merchant; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                            <?php elseif($afield->fieldname =='merchantagreement'): ?>
+                                                            <select>
+                                                                <?php foreach($merchantagreements as $merchantagreement): ?>
+                                                                <option value="<?php echo $merchantagreement->id; ?>" data-validation-optional="true"><?php echo $merchantagreement->name; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+
+                                                            <?php elseif($afield->fieldname=='merchantcreateddate' || $afield->fieldname=='validateddatetime'): ?>
+                                                            <a href="javascript:void(0);" class="clickdate"><div class="input-append date" data-form="datepicker" data-date="" data-date-format="yyyy-mm-dd" id="<?php echo $afield->fieldname; ?>"> <input id="<?php echo $afield->fieldname; ?>" name="<?php echo $afield->fieldname; ?>" class="grd-white" data-form="" size="16" type="text" value="" data-validation="<?php echo $afield->data_validation; ?>" data-validation-format="<?php echo $afield->data_validation_condition; ?>" > <span class="add-on"><i class="icon-th"></i></span> </div></a>
+                                                            <?php elseif($afield->fieldname =='status' || $afield->fieldname =='status_id'): ?>
+                                                            <select>
+                                                                <option value="0" selected>All</option>
+                                                                <?php foreach(reportStatuses($reporttypeID) as $repstatus): ?>
+                                                                <option value="<?php echo $repstatus->id; ?>"><?php echo $repstatus->id .' '.$repstatus->event; ?></option>
+                                                                <?php endforeach; ?>
+                                                            </select>
+                                                            <?php else: ?>
+                                                            <input type="text" class="grd-white" id="<?php echo $afield->fieldname; ?>" name="<?php echo $afield->fieldname; ?>" value="" placeholder="" data-validation = "<?php echo $afield->data_validation; ?>" data-validation-optional="true" />
+                                                            <?php endif; ?>
+
+                                                        </td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                    <?php endif; ?>
                                                 </table>
                                         </div>
                                     </div>
@@ -286,17 +334,82 @@ Reports ::
                             $results      = Session::get('results');
 
                             if(@$searchfields['reportType'])
-                            $resultfields = reportresultsfields($searchfields['reportType']);
+                            {
+                            if(@$searchfields['status']) {$status = @$searchfields['status'];}
+                            else
+                                if(@$searchfields['status_id']) {$status = @$searchfields['status_id'];}
+                                else
+                                { $status = '';}
+
+                            $resultfields = reportresultsfields($searchfields['reportType'],$status);
+                            }
                             ?>
 
                             <?php if(@count($searchfields)): ?>
+
                             <div class="box-body">
                                 <div class="page-header">
                                     <h3>
                                         <?php echo ucwords($reporttype->searchtype); ?>
                                     </h3>
                                 </div>
+                            <?php if(@$searchfields['status']=='summary' || @$searchfields['status_id']=='summary'): ?>
 
+                                <!--datatables tools  SUMMARY REPORT-->
+
+                                <div class="row-fluid">
+                                    <div class="span3"></div>
+                                    <div class="span6">
+                                        <div class="box corner-all">
+                                            <div class="box-header grd-white corner-top">
+                                                <div class="header-control">
+
+                                                </div>
+
+                                                <span><?php echo ucwords($reporttype->searchtype).': '.reporttitle($searchfields); ?></span>
+                                            </div>
+                                            <div class="box-body">
+
+                                                <!------------------------------------ Summary Search Report ----------------------------->
+
+                                                <table id="datatablestools" class="table table-hover responsive">
+                                                    <thead>
+                                                    <tr>
+                                                        <?php foreach($resultfields as $field): ?>
+                                                        <th class="<?php echo $field->fieldclass; ?>"><?php echo $field->fielddescription; ?></th>
+                                                        <?php endforeach; ?>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    <?php if(@count($results)): ?>
+                                                    <?php foreach($results as $red): ?>
+                                                    <?php foreach($red as $redemptions): ?>
+                                                    <tr>
+                                                        <?php foreach($resultfields as $resultfield): ?>
+
+                                                        <td><?php echo fieldval($redemptions,$resultfield->fieldname); ?></td>
+
+                                                        <?php endforeach; ?>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                    <?php endforeach; ?>
+                                                    <?php endif; ?>
+
+                                                    </tbody>
+                                                </table>
+
+                                                <!-------------------------------- END Summary Report ----------------------------->
+                                                <!-- ======================================================================== -->
+                                                <!-- ======================================================================== -->
+
+
+                                            </div><!-- /box-body -->
+                                        </div><!-- /box -->
+                                    </div><!-- /span -->
+                                </div><!--/datatables tools-->
+                                <?php else: ?>
                             <!--datatables tools-->
 
                                 <div class="row-fluid">
@@ -325,12 +438,12 @@ Reports ::
                                                     <tbody>
 
                                                     <?php if(@count($results)): ?>
-                                                    <?php foreach($results as $red): ?>
-                                                    <?php foreach($red as $redemptions): ?>
+                                                    <?php foreach($results as $res): ?>
+                                                    <?php foreach($res as $values): ?>
                                                     <tr>
                                                     <?php foreach($resultfields as $resultfield): ?>
 
-                                                        <td><?php echo fieldval($redemptions,$resultfield->fieldname); ?></td>
+                                                        <td><?php echo fieldval($values,$resultfield->fieldname); ?></td>
 
                                                     <?php endforeach; ?>
                                                     </tr>
@@ -350,6 +463,7 @@ Reports ::
                                         </div><!-- /box -->
                                     </div><!-- /span -->
                                 </div><!--/datatables tools-->
+                                <?php endif; ?>
                                 <?php endif; ?>
                             </div>
                         </div>

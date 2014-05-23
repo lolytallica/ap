@@ -40,6 +40,10 @@ class ReportController extends AdminController {
         'form_name'  => 'required'
     );
 
+    protected $ve = 'SELECT voucher_event.id AS voucherevent_id, voucher_event.merchant_id, merchant.merchant, voucher_event.firstname, voucher_event.lastname, voucher_event.email, voucher_event.merchantusername, voucher_event.merchantprofile, voucher_event.ipaddress, voucher_event.event_id, event.event, voucher_event.merchantredemptionid AS DF_traceid, voucher.transactionid as transaction_id, voucher.orderid as order_id, voucher_event.voucher_id, voucher.amount, voucher.currency, voucher_event.datetimecreated, voucher.datetimecreated AS purchased, (extract(epoch from voucher_event.datetimecreated )- extract(epoch from voucher.datetimecreated )) AS timetaken
+                FROM "voucher_event"  INNER JOIN "event" ON voucher_event.event_id=event.id INNER JOIN merchant ON voucher_event.merchant_id=merchant.id INNER JOIN voucher ON voucher_event.voucher_id=voucher.id
+                WHERE voucher_event.event_id > 302 and voucher_event.datetimecreated >= current_date';
+
 
     /**
      * Show a list of all the Reports.
@@ -52,25 +56,16 @@ class ReportController extends AdminController {
         if(is_null($reportsearchID))
         {
             $reportsearchID = 1; //default search form
-          //  return Redirect::to("admin/reports/searchreport")->with('conversionrate', $conversionrate);
-
         }
 
 
         if(is_null($reporttypeID))
         {
-            $reporttypeID = 1;
-           // return Redirect::to();
+            $reporttypeID = 1;;
         }
 
 
-
-
-        //var_dump(json_encode($statuses)); exit;
-
         $reportsearch = Reportsearch::find($reportsearchID);
-
-     //   var_dump($reportsearch->formfields()); exit;
 
         if(Session::get('reporttypeID'))
         {
@@ -116,13 +111,12 @@ class ReportController extends AdminController {
         $fields = $this->buildSearch();
 
         ///statuses
-
         $statuses = $this->reportStatuses();
 
 
         $transactionsbase = date('Y-m-d').' 00:00';
 
-        // Show the page
+        // Viewwwwwwwwwwwwww
         return View::make('backend/reports/index')
             ->with('fields',$fields)
             ->with('reports',$allreportforms)
@@ -150,12 +144,10 @@ class ReportController extends AdminController {
 
     public function reportStatuses()
     {
-
         $allstatuses = array();
             //Orders, Customers
 
-                //$statuses = report_api_call('shop', 'statuses/order');
-
+               //$statuses = report_api_call('shop', 'statuses/order');
                 $status_query = 'select distinct "event".id, "event".event from "event" join "order" on "event".id = "order".status_id order by event.id';
 
                 $orders_statuses['orders'] = DB::select(DB::raw($status_query));
@@ -164,26 +156,19 @@ class ReportController extends AdminController {
             //Redemptions
 
                // $statuses = report_api_call('voucher', 'statuses/voucher_event');
-
                 $redemptions_statuses['redemptions'] = DB::table('event')->whereIn('id', array('403','406','491'))->orderBy('id')->select('id','event')->get();
 
                  //Shop Transactions
 
                // $statuses = report_api_call('shop', 'statuses/transaction');
-
                 $status_query = 'select distinct "event".id, "event".event from "event" join "transaction" on "event".id = "transaction".status_id order by event.id';
 
                 $transaction_statuses['transactions'] = DB::select(DB::raw($status_query));
 
-
             //Validation
 
   //      $validation_statuses['validation'] = array();
-
         $allstatuses['statuses'] = array($transaction_statuses, $redemptions_statuses, $orders_statuses);
-
-       // var_dump(json_encode($allstatuses)); exit;
-
 
         return $allstatuses;
     }
@@ -191,13 +176,14 @@ class ReportController extends AdminController {
 
     public function getSearchreport($reportsearchID = null, $searchfields = array())
     {
-       // return $this->getIndex($reportsearchID = null, $searchfields = array())
+
     }
 
 
     public function postSearchreport()
     {
         $searchfields = Input::all();
+
 
         if(Input::has('search'))
         {
@@ -206,14 +192,13 @@ class ReportController extends AdminController {
         else
         if(Input::has('saveform'))
         {
-           // var_dump($searchfields); exit;
             return $this->saveReportsearch($searchfields);
         }
     }
 
-    /*=================================================
-                    Search form action submitted
-    =================================================*/
+                        /*=================================================
+                                        Search form action submitted
+                        =================================================*/
 
     public function searchResults($searchfields)
     {
@@ -222,10 +207,8 @@ class ReportController extends AdminController {
 
         $report = Input::get('reportType');
 
-
         if ($validator->fails())
         {
-
             return Redirect::back()->withInput()->withErrors($validator);
         }
 
@@ -268,9 +251,24 @@ class ReportController extends AdminController {
             ->with('reporttype',$reporttype);
     }
 
-    /*===========================================
-                    Save form action submitted
-    =================================================*/
+                        /*===========================================
+                                        Save form action submitted
+                        =================================================*/
+
+    public function reportevents($reporttypeID)
+    {
+    $cnt=0;
+    $reportevents = '';
+        foreach(reportStatuses($reporttypeID) as $ev)
+        {
+
+        $reportevents .= $ev->id;
+        $reportevents .= ($cnt<(count(reportStatuses($reporttypeID))-1)?',':'');
+        $cnt++;
+        }
+
+        return $reportevents;
+    }
 
     public function saveReportsearch($searchfields)
     {
@@ -328,7 +326,7 @@ class ReportController extends AdminController {
     }
 
 
-
+    //Conversionrate
     public function conversionrate()
     {
         $postfields = array();
@@ -344,18 +342,16 @@ class ReportController extends AdminController {
     }
 
 
-    /* =================================================================
-        ====================== Search functions =========================
-         ================================================================== */
+                /* =================================================================
+                    ====================== Search functions =========================
+                     ================================================================== */
 
     public function scopeSearch($query, $field)
     {
         return $query->where(''.$field.'', '=', $field);
     }
 
-
-
-
+    ///Redemptions
 
     public function searchRedemptions($searchfields)
     {
@@ -397,39 +393,79 @@ class ReportController extends AdminController {
             ->where('datetimecreated','<=',$date_to)
             ->get(); */
 
-        /*@TODO: GET dynamically from table*/
-        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform');
+        /*@todo: GET dynamically from table*/
+        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform', 'status', 'status_id','currency');
 
         $date_from = $searchfields['date_from'];
         $date_to   = $searchfields['date_to'];
 
-        $query = 'SELECT merchant.abbreviation as merchant, voucher_event.voucher_id, voucher_event.firstname, voucher_event.lastname, voucher_event.merchantusername, voucher_event.merchantprofile, voucher_event.event_id , event.event, voucher_event.purchased, voucher_event.merchantredemptionid AS traceid, voucher_event.ipaddress, voucher_event.amount, voucher_event.currency, voucher_event.datetimecreated FROM voucher_event JOIN merchant ON voucher_event.merchant_id = merchant.id JOIN event ON voucher_event.event_id = event.id  WHERE voucher_event.datetimecreated>='."'".$date_from."'".' ';
+
+          /*  $query = 'SELECT merchant.abbreviation as merchant, voucher_event.voucher_id, voucher_event.firstname, voucher_event.lastname, voucher_event.merchantusername, voucher_event.merchantprofile, voucher_event.event_id , event.event, voucher_event.purchased, voucher_event.merchantredemptionid AS traceid, voucher_event.ipaddress, voucher_event.amount, voucher_event.currency, voucher_event.datetimecreated FROM voucher_event JOIN merchant ON voucher_event.merchant_id = merchant.id JOIN event ON voucher_event.event_id = event.id  WHERE voucher_event.datetimecreated>='."'".$date_from."'".' ';
+            if($searchfields['date_to'])
+            {
+                $query .= ' AND voucher_event.datetimecreated<= '."'".$date_to."'".' ';
+            }
+            foreach($searchfields as $key => $val)
+            {
+                if($val && !in_array($key, $excluded_fields) )
+                {
+                    $query .= ' AND "'.$key.'" = '."'".$val."'".' ';
+                }
+                if(($key=='status' || $key=='status_id') && !in_array($val, array('summary','all','0')) )
+                {
+                    $key = 'event.id';
+                    $query .= ' AND '.$key.' = '."'".$val."'".' ';
+                }
+                if($key=='currency' && $val!='all' )
+                {
+                    $query .= ' AND '.$key.' = '."'".$val."'".' ';
+                }
+            }*/
+
+
+        ////From voucher_event
+        $query = 'SELECT merchant, transaction_id,  voucher_id, firstname, lastname, merchantusername, merchantprofile, event_id, event, DF_traceid as traceid, purchased, ipaddress, amount, currency, datetimecreated, timetaken FROM ('.$this->ve.') as ve WHERE event_id in ('.$this->reportevents(1).') AND purchased>='."'".$date_from."'".' ';
         if($searchfields['date_to'])
         {
-            $query .= ' AND voucher_event.datetimecreated<= '."'".$date_to."'".' ';
+            $query .= ' AND purchased<= '."'".$date_to."'".' ';
         }
         foreach($searchfields as $key => $val)
         {
             if($val && !in_array($key, $excluded_fields) )
-            {if($key=='status') $key = 'event_id';
-            $query .= ' AND "'.$key.'" = '."'".$val."'".' ';
+            {
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+            if(($key=='status' || $key=='status_id') && !in_array($val, array('summary','all','0')) )
+            {
+                $key = 'event_id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+            if($key=='currency' && $val!='all' )
+            {
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
             }
         }
 
 
+
+
+        /* ========== Summary ==============*/
+        if(@$searchfields['status']=='summary' || @$searchfields['status_id']=='summary')
+        {
+           $query_summary = 'select event_id, event, COUNT(event_id) as ordercount, SUM(amount) as ordersum from ('.$query.') as redemptions group by event_id, event order by event_id';
+
+            $query = $query_summary;
+        }
+
+        /* ================================*/
+
         $redemptions = DB::select(DB::raw($query));
 
-        return array(
-            'redemptions'    => $redemptions
-        );
-
+        return array( 'redemptions' => $redemptions );
 
     }
 
-    public function getRedemptionDetails($searchfields)
-    {
-
-    }
+    ///Orders
 
     public function searchOrders($searchfields)
     {
@@ -437,14 +473,18 @@ class ReportController extends AdminController {
         $postfields = array();
 
         /*@TODO: GET dynamically from table*/
-        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform');
+        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform', 'status', 'status_id');
 
         $date_from = $searchfields['date_from'];
+
+
         $date_to   = $searchfields['date_to'];
 
-        $query = 'SELECT merchant.abbreviation as merchant, "order".id AS order_id, "transaction".firstname, "transaction".lastname, "transaction".merchantusername, transaction.merchantprofile, transaction.ipaddress, "order".status_id AS event_id, event.event, "order".cctype, "order".cardnumber, "order".datetimecompleted as purchased, transaction.merchanttransactionid AS traceid, "order".amount, "order".currency, "order".datetimecreated
+        $spokeolookup = 'https://www.spokeo.com/search?q='; //.$record['firstname']."+".$record['lastname'].",".preg_replace('/ /', '+', $record['city']";
+
+        $query = 'SELECT merchant.abbreviation as merchant, "order".id AS order_id, "transaction".firstname, "transaction".lastname, "transaction".merchantusername, transaction.merchantprofile, transaction.ipaddress, "order".status_id AS event_id, event.event, "order".cctype, "order".cardnumber, "order".datetimecompleted as purchased, transaction.merchanttransactionid AS traceid, "order".amount, "order".currency, "order".datetimecreated, "order".transaction_id
                   FROM "order" JOIN transaction ON "order".transaction_id = transaction.id JOIN merchant ON transaction.merchant_id = merchant.id JOIN event ON "order".status_id = event.id
-                  WHERE "order".datetimecreated>='."'".$date_from."'".' ';
+                  WHERE event.id in ('.$this->reportevents(1).') AND "order".datetimecreated>='."'".$date_from."'".' ';
 
         if($searchfields['date_to'])
         {
@@ -454,36 +494,43 @@ class ReportController extends AdminController {
         {
             if($val && !in_array($key, $excluded_fields) )
             {
-                if($key=='status') $key = 'event.id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+            if( ($key=='status' || $key=='status_id') && !in_array($val, array('summary','all','0')) )
+            {
+                $key = 'event.id';
                 $query .= ' AND '.$key.' = '."'".$val."'".' ';
             }
         }
 
+        /* ========== Summary ==============*/
+        if(@$searchfields['status']=='summary' || @$searchfields['status_id']=='summary')
+        {
+            $query_summary = 'select event_id, event, COUNT(event_id) as ordercount, SUM(amount) as ordersum from ('.$query.') as orders group by event_id, event order by event_id';
+
+            $query = $query_summary;
+        }
+
         $orders = DB::select(DB::raw($query));
 
-        return array(
-            'orders'    => $orders
-        );
+        return array('orders' => $orders);
     }
 
-    public function getOrderdetails()
-    {
-
-    }
 
     public function searchShoptransactions($searchfields)
     {
         $postfields = array();
 
         /*@TODO: GET dynamically from table*/
-        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform');
+        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform', 'status', 'status_id');
 
         $date_from = $searchfields['date_from'];
         $date_to   = $searchfields['date_to'];
 
-        $query = 'SELECT merchant.abbreviation as merchant, transaction.id AS transaction_id, transaction.firstname, "transaction".lastname, "transaction".merchantusername, transaction.merchantprofile, transaction.ipaddress, transaction.status_id AS event_id, event.event, transaction.datetimecreated
+
+        $query = 'SELECT merchant.abbreviation as merchant, transaction.id AS transaction_id, transaction.firstname, "transaction".lastname, "transaction".merchantusername, transaction.merchantprofile, transaction.ipaddress, transaction.status_id AS event_id, event.event, "order".amount, transaction.datetimecreated
                   FROM transaction JOIN "order" ON "order".transaction_id = transaction.id JOIN merchant ON transaction.merchant_id = merchant.id JOIN event ON transaction.status_id = event.id
-                  WHERE transaction.datetimecreated>='."'".$date_from."'".' ';
+                  WHERE event.id in ('.$this->reportevents(3).') AND transaction.datetimecreated>='."'".$date_from."'".' ';
 
         if($searchfields['date_to'])
         {
@@ -493,41 +540,47 @@ class ReportController extends AdminController {
         {
             if($val && !in_array($key, $excluded_fields) )
             {
-                if($key=='status') $key = 'event.id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+            if( ($key=='status' || $key=='status_id')   && !in_array($val, array('summary','all','0')) )
+            {
+                $key = 'event.id';
                 $query .= ' AND '.$key.' = '."'".$val."'".' ';
             }
         }
 
+        /* ========== Summary ==============*/
+        if(@$searchfields['status']=='summary' || @$searchfields['status_id']=='summary')
+        {
+            $query_summary = 'select event_id, event, COUNT(event_id) as ordercount, SUM(amount) as ordersum from ('.$query.') as redemptions group by event_id, event order by event_id';
+
+            $query = $query_summary;
+        }
+
+
         $transactions = DB::select(DB::raw($query));
 
-        return array(
-            'transactions'   => $transactions
-        );
+        return array('transactions' => $transactions);
     }
 
-    public function getShoptransactionDetails()
-    {
 
-    }
-
-    public function searchValidationrequests($searchfields)
-    {
-
-    }
+    ///Customers
 
     public function searchCustomers($searchfields)
     {
         $postfields = array();
 
         /*@TODO: GET dynamically from table*/
-        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform');
+        $excluded_fields = array('_token','date_from','date_to','reportType', 'search', 'saveform', 'status', 'status_id');
 
         $date_from = $searchfields['date_from'];
         $date_to   = $searchfields['date_to'];
 
+
+
         $query = 'SELECT merchant.abbreviation as merchant, "transaction".firstname, "transaction".lastname, "transaction".merchantusername, transaction.merchantprofile, transaction.email, transaction.merchantcreateddate, "order".amount, "order".currency
                   FROM "order" JOIN transaction ON "order".transaction_id = transaction.id JOIN merchant ON transaction.merchant_id = merchant.id JOIN event ON "order".status_id = event.id
-                  WHERE "order".datetimecreated>='."'".$date_from."'".' ';
+                  WHERE event.id in ('.$this->reportevents(2).') AND "order".datetimecreated>='."'".$date_from."'".' ';
 
         if($searchfields['date_to'])
         {
@@ -537,27 +590,28 @@ class ReportController extends AdminController {
         {
             if($val && !in_array($key, $excluded_fields) )
             {
-                if($key=='status') $key = 'event.id';
+                $query .= ' AND '.$key.' = '."'".$val."'".' ';
+            }
+            if( ($key=='status' || $key =='status_id') && !in_array($val, array('summary','all','0')) )
+            {
+                $key = 'event.id';
                 $query .= ' AND '.$key.' = '."'".$val."'".' ';
             }
         }
 
-      //  echo $query; exit;
-
         $customers = DB::select(DB::raw($query));
 
-        return array(
-            'customers'    => $customers
-        );
+        return array('customers'  => $customers );
     }
 
 
-
+    ///Search by trace
     public function getTrace($traceID)
     {
 
     }
 
+    //Additional Search Fields
     public function buildSearch()
     {
         ///Transaction table columns
@@ -591,6 +645,30 @@ class ReportController extends AdminController {
         return $sf;
 
     }
+
+    /* ===================== details Functions ===========================*/
+
+    public function getRedemptionDetails($searchfields)
+    {
+
+    }
+
+    public function getOrderdetails()
+    {
+
+    }
+
+
+    public function getShoptransactionDetails()
+    {
+
+    }
+
+    public function searchValidationrequests($searchfields)  //searchtype 4
+    {
+
+    }
+    /*******************************************************************************/
 
 
     /*===========================================================================
