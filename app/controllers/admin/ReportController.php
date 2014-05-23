@@ -482,7 +482,7 @@ class ReportController extends AdminController {
 
         $spokeolookup = 'https://www.spokeo.com/search?q='; //.$record['firstname']."+".$record['lastname'].",".preg_replace('/ /', '+', $record['city']";
 
-        $query = 'SELECT merchant.abbreviation as merchant, "order".id AS order_id, "transaction".firstname, "transaction".lastname, "transaction".merchantusername, transaction.merchantprofile, transaction.ipaddress, "order".status_id AS event_id, event.event, "order".cctype, "order".cardnumber, "order".datetimecompleted as purchased, transaction.merchanttransactionid AS traceid, "order".amount, "order".currency, "order".datetimecreated, "order".transaction_id
+        $query = 'SELECT merchant.abbreviation as merchant, "order".id AS order_id, "transaction".firstname, "transaction".lastname, transaction.city, "transaction".merchantusername, transaction.merchantprofile, transaction.ipaddress, "order".status_id AS event_id, event.event, "order".cctype, "order".cardnumber, "order".datetimecompleted as purchased, transaction.merchanttransactionid AS traceid, "order".amount, "order".currency, "order".datetimecreated, "order".transaction_id
                   FROM "order" JOIN transaction ON "order".transaction_id = transaction.id JOIN merchant ON transaction.merchant_id = merchant.id JOIN event ON "order".status_id = event.id
                   WHERE event.id in ('.$this->reportevents(1).') AND "order".datetimecreated>='."'".$date_from."'".' ';
 

@@ -494,7 +494,15 @@ function fieldval($report, $fieldname)
         case 'firstname':
         {
            @ $fieldval = $report->firstname.' '.$report->lastname;
+
             //reporttype = orders? set spokeolookup url
+
+          //  <a style='float:right;' class='' target='_blank' href='https://www.spokeo.com/search?q=".$record['firstname']."+".$record['lastname'].",".preg_replace('/ /', '+', $record['city'])."'><img width='22' src='images/spokeo16.png' alt='Spokeo Lookup'/></a>
+            $spokeourl = 'https://www.spokeo.com/search?q='.$report->firstname.'+'.$report->lastname.'+'.preg_replace('/ /', '+', $report->city);
+            $spokeoimg = 'images/spokeo16.png';
+
+            @ $fieldval .= ($reporttypeID==1?'<a href="'.$spokeourl.'"><img src = '' /></a>':'');
+
             break;
         }
         case 'purchased':
