@@ -7,6 +7,10 @@ use Cache;
 use Transactionorder;
 use Resultfields;
 use Reporttype;
+<<<<<<< HEAD
+=======
+use Currency;
+>>>>>>> origin/develop
 use DB;
 
                             /*===========================================
@@ -279,6 +283,36 @@ function update_cache()
 
 }
 
+<<<<<<< HEAD
+=======
+function allcurrencies()
+{
+    if(Sentry::getUser()->merchant_id>0)
+    {
+        $allcurrencies = Transactionorder::join('transaction','order.transaction_id','=','transaction.id')
+            ->where('transaction.merchant_id','=',Sentry::getUser()->merchant_id)
+            ->select('order.currency')
+            ->distinct()
+            ->get();
+    }
+    else
+        if(Sentry::getUser()->merchantagreement_id>0)
+        {
+            $allcurrencies = Transactionorder::join('transaction','order.transaction_id','=','transaction.id')
+                ->join('merchantagreement','transaction.merchant_id','=','merchantagreement.merchant_id')
+                ->where('merchantagreement.id','=',Sentry::getUser()->merchantagreement_id)
+                ->select('order.currency')
+                ->distinct()
+                ->get();
+        }
+        else{
+            $allcurrencies = Transactionorder::select('currency')->distinct()->get();
+        }
+
+    return $allcurrencies;
+}
+
+>>>>>>> origin/develop
 /*===========================================
                        User Actions
     =============================================*/
@@ -354,6 +388,16 @@ function reporttitle($searchfields)
 }
 /////////////
 
+<<<<<<< HEAD
+=======
+function currencylist()
+{
+
+}
+
+////
+
+>>>>>>> origin/develop
 function reportStatuses($reporttypeID)
 {
 
@@ -368,9 +412,17 @@ function reportStatuses($reporttypeID)
         {
             //$statuses = report_api_call('shop', 'statuses/order');
 
+<<<<<<< HEAD
             $status_query = 'select distinct "event".id, "event".event from "event" join "order" on "event".id = "order".status_id order by event.id';
 
             $statuses = DB::select(DB::raw($status_query));
+=======
+           // $status_query = 'select distinct "event".id, "event".event from "event" join "order" on "event".id = "order".status_id order by event.id';
+
+            $statuses = DB::table('event')->whereIn('id', array('305','403','901'))->orderBy('id')->get();
+
+            //$statuses = DB::select(DB::raw($status_query));
+>>>>>>> origin/develop
 
             break;
         }
@@ -378,7 +430,11 @@ function reportStatuses($reporttypeID)
         {
             // $statuses = report_api_call('voucher', 'statuses/voucher_event');
 
+<<<<<<< HEAD
             $statuses = DB::table('event')->whereIn('id', array('403','406','491'))->orderBy('id')->get();
+=======
+            $statuses = DB::table('event')->whereIn('id', array('403'))->orderBy('id')->get();
+>>>>>>> origin/develop
 
             break;
         }
@@ -386,15 +442,29 @@ function reportStatuses($reporttypeID)
         {
             // $statuses = report_api_call('shop', 'statuses/transaction');
 
+<<<<<<< HEAD
             $status_query = 'select distinct "event".id, "event".event from "event" join "transaction" on "event".id = "transaction".status_id order by event.id';
 
             $statuses = DB::select(DB::raw($status_query));
+=======
+            //$status_query = 'select distinct "event".id, "event".event from "event" join "transaction" on "event".id = "transaction".status_id order by event.id';
+
+            $statuses = DB::table('event')->whereIn('id', array('102','103','105','403','901','908'))->orderBy('id')->get();
+
+            //$statuses = DB::select(DB::raw($status_query));
+>>>>>>> origin/develop
 
             break;
         }
         case '4':
         {
+<<<<<<< HEAD
             $statuses = '';
+=======
+            $statuses = DB::table('event')->whereIn('id', array('91','811','901'))->orderBy('id')->get();
+
+         //   $statuses = DB::select(DB::raw($status_query));
+>>>>>>> origin/develop
             break;
         }
 
@@ -405,6 +475,48 @@ function reportStatuses($reporttypeID)
 
 ///////////////
 
+<<<<<<< HEAD
+=======
+/*============== Result Fields ====================*/
+
+function reportresultsfields($reporttypeID, $status)
+{
+    if($status == 'summary')
+    {
+        $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')
+            ->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')->orderby('fieldorder')
+            ->whereIn('summary',array('1','2'))
+            ->get();
+
+         //var_dump($resultfields); exit;
+    }
+    else
+    {
+    $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')
+        ->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')
+        ->whereIn('summary',array('0','2'))
+        ->orderby('fieldorder')
+        ->get();
+    }
+
+
+    return $resultfields;
+}
+
+
+
+function summaryresultsfields($reporttypeID)
+{
+    $resultfields = Resultfields::join('report_result_fields','result_fields.id','=','report_result_fields.resultfields_id')->where('report_result_fields.reporttype_id','=',''.$reporttypeID.'')
+        ->select('result_fields.id', 'result_fields.fieldclass', 'result_fields.fieldname','result_fields.fielddescription', 'report_result_fields.reportsearch_id','report_result_fields.reporttype_id')->orderby('fieldorder')
+        ->whereIn('summary',array('1','2'))
+        ->get();
+
+    return $resultfields;
+}
+
+/*============== Result Values ====================*/
+>>>>>>> origin/develop
 
 function fieldval($report, $fieldname)
 {
@@ -413,22 +525,44 @@ function fieldval($report, $fieldname)
     {
         case 'firstname':
         {
+<<<<<<< HEAD
             $fieldval = $report->firstname.' '.$report->lastname;
+=======
+           @ $fieldval = $report->firstname.' '.$report->lastname;
+
+            //reporttype = orders? set spokeolookup url
+
+          //  <a style='float:right;' class='' target='_blank' href='https://www.spokeo.com/search?q=".$record['firstname']."+".$record['lastname'].",".preg_replace('/ /', '+', $record['city'])."'><img width='22' src='images/spokeo16.png' alt='Spokeo Lookup'/></a>
+            $spokeourl = 'https://www.spokeo.com/search?q='.$report->firstname.'+'.$report->lastname.'+'.preg_replace('/ /', '+', $report->city);
+            $spokeoimg = 'images/spokeo16.png';
+
+            @ $fieldval .= ($reporttypeID==1?'<a href="'.$spokeourl.'"><img src = '' /></a>':'');
+
+>>>>>>> origin/develop
             break;
         }
         case 'purchased':
         {
+<<<<<<< HEAD
             $fieldval  = date('F d, Y H.i:s', strtotime($report->$fieldname));
+=======
+           @ $fieldval  = date('F d, Y H.i:s', strtotime($report->$fieldname));
+>>>>>>> origin/develop
             break;
         }
 
         case 'datetimecreated':
         {
+<<<<<<< HEAD
             $fieldval  = date('F d, Y H.i:s', strtotime($report->$fieldname));
+=======
+            @ $fieldval  = date('F d, Y H.i:s', strtotime($report->$fieldname));
+>>>>>>> origin/develop
             break;
         }
         case 'timetaken':
         {
+<<<<<<< HEAD
             $fieldval = sec2time(strtotime($report->purchased) - strtotime($report->datetimecreated)) ;
             break;
         }
@@ -436,17 +570,32 @@ function fieldval($report, $fieldname)
         case 'percent':
         {
             $fieldval = '';
+=======
+            @ $fieldval = sec2time($report->$fieldname) ;
+            break;
+        }
+      //  case 'ordercount':
+        case 'percent':
+       // case 'traceid':
+        {
+            @ $fieldval = ''; //$report->$fieldname;
+>>>>>>> origin/develop
             break;
         }
         default:
             {
+<<<<<<< HEAD
             $fieldval  = $report->$fieldname;
+=======
+           @ $fieldval  = $report->$fieldname;
+>>>>>>> origin/develop
             }
     }
 
     return $fieldval;
 }
 
+<<<<<<< HEAD
 function reportresultsfields($reporttypeID, $status)
 {
     if($status == 'summary')
@@ -478,6 +627,8 @@ function summaryresultsfields($reporttypeID)
 
     return $resultfields;
 }
+=======
+>>>>>>> origin/develop
 /*===========================================
                         Seconds to time
    ===============================================*/

@@ -157,6 +157,7 @@ Reports ::
 
                                                 <label class="control-label" for="inputSelect">Search </label>
                                                 <div class="controls">
+<<<<<<< HEAD
                                                     <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType" {{(($reportsearchID>1)? 'disabled="disabled"':'')}}>
                                                         <option value="select" selected>--- Select report ---</option>
                                                         @foreach($reporttypes as $reptype)
@@ -164,6 +165,18 @@ Reports ::
                                                         @endforeach
                                                     </select>
 
+=======
+
+                                                    <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType" {{(($reportsearchID>1)? 'disabled="disabled"':'')}}>
+                                                        <option value="select" selected>--- Select report ---</option>
+                                                        @foreach($reporttypes as $reptype)
+                                                        <option value="{{$reptype->id}}" {{(($reportsearchID>1 && $reporttypeID == $reptype->id)? 'selected disabled="disabled"':'')}}   >{{ucwords($reptype->description)}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @if($reportsearchID>1)
+                                                    <input type="hidden" name="reportType" id="reportType" value="{{ $reporttypeID }}">
+                                                    @endif
+>>>>>>> origin/develop
                                                 </div>
                                             </div>
 
@@ -200,8 +213,14 @@ Reports ::
                                                             <a href="javascript:void(0);" class="clickdate"><div class="input-append date" data-form="datepicker" data-date="" data-date-format="yyyy-mm-dd" id="{{$field->fieldname}}"> <input id="{{$field->fieldname}}" name="{{$field->fieldname}}" class="grd-white" data-form="" size="16" type="text" value="" data-validation="{{$field->data_validation}}" data-validation-format="{{$field->data_validation_condition}}" > <span class="add-on"><i class="icon-th"></i></span> </div></a>
 
                                                             @elseif($field->fieldname =='status')
+<<<<<<< HEAD
                                                             <select>
                                                                 <option value="0" selected>All</option>
+=======
+                                                            <select name="{{ $field->fieldname }}" id="{{ $field->fieldname}}">
+                                                                <option value="all" selected>All</option>
+                                                                <option value="summary">Summary</option>
+>>>>>>> origin/develop
                                                                 @foreach(reportStatuses($reporttypeID) as $repstatus)
                                                                 <option value="{{$repstatus->id}}">{{$repstatus->id .' '.$repstatus->event}}</option>
                                                                 @endforeach
@@ -331,18 +350,94 @@ Reports ::
                             $results      = Session::get('results');
 
                             if(@$searchfields['reportType'])
+<<<<<<< HEAD
 
                             $resultfields = reportresultsfields($searchfields['reportType'],$searchfields['status']);
                             ?>
 
                             @if(@count($searchfields))
+=======
+                            {
+                            if(@$searchfields['status']) {$status = @$searchfields['status'];}
+                            else
+                                if(@$searchfields['status_id']) {$status = @$searchfields['status_id'];}
+                                else
+                                { $status = '';}
+
+                            $resultfields = reportresultsfields($searchfields['reportType'],$status);
+                            }
+                            ?>
+
+                            @if(@count($searchfields))
+
+>>>>>>> origin/develop
                             <div class="box-body">
                                 <div class="page-header">
                                     <h3>
                                         {{ ucwords($reporttype->searchtype) }}
                                     </h3>
                                 </div>
+<<<<<<< HEAD
 
+=======
+                            @if(@$searchfields['status']=='summary' || @$searchfields['status_id']=='summary')
+
+                                <!--datatables tools  SUMMARY REPORT-->
+
+                                <div class="row-fluid">
+                                    <div class="span3"></div>
+                                    <div class="span6">
+                                        <div class="box corner-all">
+                                            <div class="box-header grd-white corner-top">
+                                                <div class="header-control">
+
+                                                </div>
+
+                                                <span>{{ ucwords($reporttype->searchtype).': '.reporttitle($searchfields) }}</span>
+                                            </div>
+                                            <div class="box-body">
+
+                                                <!------------------------------------ Summary Search Report ----------------------------->
+
+                                                <table id="datatablestools" class="table table-hover responsive">
+                                                    <thead>
+                                                    <tr>
+                                                        @foreach($resultfields as $field)
+                                                        <th class="{{$field->fieldclass}}">{{$field->fielddescription}}</th>
+                                                        @endforeach
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    @if(@count($results))
+                                                    @foreach($results as $red)
+                                                    @foreach($red as $redemptions)
+                                                    <tr>
+                                                        @foreach($resultfields as $resultfield)
+
+                                                        <td>{{fieldval($redemptions,$resultfield->fieldname)}}</td>
+
+                                                        @endforeach
+                                                    </tr>
+                                                    @endforeach
+                                                    @endforeach
+                                                    @endif
+
+                                                    </tbody>
+                                                </table>
+
+                                                <!-------------------------------- END Summary Report ----------------------------->
+                                                <!-- ======================================================================== -->
+                                                <!-- ======================================================================== -->
+
+
+                                            </div><!-- /box-body -->
+                                        </div><!-- /box -->
+                                    </div><!-- /span -->
+                                </div><!--/datatables tools-->
+                                @else
+>>>>>>> origin/develop
                             <!--datatables tools-->
 
                                 <div class="row-fluid">
@@ -371,12 +466,21 @@ Reports ::
                                                     <tbody>
 
                                                     @if(@count($results))
+<<<<<<< HEAD
                                                     @foreach($results as $red)
                                                     @foreach($red as $redemptions)
                                                     <tr>
                                                     @foreach($resultfields as $resultfield)
 
                                                         <td>{{fieldval($redemptions,$resultfield->fieldname)}}</td>
+=======
+                                                    @foreach($results as $res)
+                                                    @foreach($res as $values)
+                                                    <tr>
+                                                    @foreach($resultfields as $resultfield)
+
+                                                        <td>{{fieldval($values,$resultfield->fieldname)}}</td>
+>>>>>>> origin/develop
 
                                                     @endforeach
                                                     </tr>
@@ -397,6 +501,10 @@ Reports ::
                                     </div><!-- /span -->
                                 </div><!--/datatables tools-->
                                 @endif
+<<<<<<< HEAD
+=======
+                                @endif
+>>>>>>> origin/develop
                             </div>
                         </div>
                     </div>

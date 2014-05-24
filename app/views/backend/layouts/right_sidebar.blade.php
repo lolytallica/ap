@@ -110,6 +110,7 @@
                         <span style="width: 100%;"></span>
                         <p class="color-white">Transactions</p>
                     </div>
+<<<<<<< HEAD
                     <div rel="tooltip" title="Chargebacks {{round(($totalchb/$totaltransactions)*100, 2)}}%" class="progress progress-mini">
                         <span class="bar bar-warning" style="width: {{round(($totalchb/$totaltransactions)*100, 2)}}%;"></span>
 
@@ -117,6 +118,15 @@
                     </div>
                     <div rel="tooltip" title="Refunds {{round(($totalrefunds/$totaltransactions)*100, 2)}}%" class="progress progress-mini">
                         <span class="bar bar-danger" style="width: {{round(($totalchb/$totaltransactions)*100, 2)}}%;"></span>
+=======
+                    <div rel="tooltip" title="Chargebacks {{(@$totaltransactions>0?round(($totalchb/$totaltransactions)*100, 2):0)}}%" class="progress progress-mini">
+                        <span class="bar bar-warning" style="width: {{(@$totaltransactions>0?round(($totalchb/$totaltransactions)*100, 2):0)}}%;"></span>
+
+                        <!--                                                <p class="color-white">60%</p>-->
+                    </div>
+                    <div rel="tooltip" title="Refunds {{(@$totaltransactions>0?round(($totalrefunds/$totaltransactions)*100, 2):0)}}%" class="progress progress-mini">
+                        <span class="bar bar-danger" style="width: {{(@$totaltransactions>0?round(($totalrefunds/$totaltransactions)*100, 2):0)}}%;"></span>
+>>>>>>> origin/develop
 
                     </div>
 

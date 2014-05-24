@@ -1,0 +1,28 @@
+
+<?php /*  Page title  */ ?>
+<?php $__env->startSection('title'); ?>
+Page Not Found
+@parent
+<?php $__env->stopSection(); ?>
+
+<?php /*  Page content  */ ?>
+<?php $__env->startSection('content'); ?>
+
+<section class="section">
+    <div class="container">
+        <div class="error-page">
+            <h1 class="error-code color-red">Error 404</h1>
+            <p class="error-description muted">Oops! The requested page could not be found</p>
+
+            <a href="<?php echo route('admin'); ?>" class="btn btn-small btn-primary"><i class="icofont-arrow-left"></i> Back to Dashboard</a>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('backend/layouts/main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

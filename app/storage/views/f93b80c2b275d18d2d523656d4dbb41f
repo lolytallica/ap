@@ -156,6 +156,7 @@ Reports ::
 
                                                 <label class="control-label" for="inputSelect">Search </label>
                                                 <div class="controls">
+<<<<<<< HEAD
                                                     <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType" <?php echo (($reportsearchID>1)? 'disabled="disabled"':''); ?>>
                                                         <option value="select" selected>--- Select report ---</option>
                                                         <?php foreach($reporttypes as $reptype): ?>
@@ -163,6 +164,18 @@ Reports ::
                                                         <?php endforeach; ?>
                                                     </select>
 
+=======
+
+                                                    <select id="reportType" data-form="select2" style="width:200px" data-placeholder="Select report" name="reportType" <?php echo (($reportsearchID>1)? 'disabled="disabled"':''); ?>>
+                                                        <option value="select" selected>--- Select report ---</option>
+                                                        <?php foreach($reporttypes as $reptype): ?>
+                                                        <option value="<?php echo $reptype->id; ?>" <?php echo (($reportsearchID>1 && $reporttypeID == $reptype->id)? 'selected disabled="disabled"':''); ?>   ><?php echo ucwords($reptype->description); ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                    <?php if($reportsearchID>1): ?>
+                                                    <input type="hidden" name="reportType" id="reportType" value="<?php echo $reporttypeID; ?>">
+                                                    <?php endif; ?>
+>>>>>>> origin/develop
                                                 </div>
                                             </div>
 
@@ -199,8 +212,14 @@ Reports ::
                                                             <a href="javascript:void(0);" class="clickdate"><div class="input-append date" data-form="datepicker" data-date="" data-date-format="yyyy-mm-dd" id="<?php echo $field->fieldname; ?>"> <input id="<?php echo $field->fieldname; ?>" name="<?php echo $field->fieldname; ?>" class="grd-white" data-form="" size="16" type="text" value="" data-validation="<?php echo $field->data_validation; ?>" data-validation-format="<?php echo $field->data_validation_condition; ?>" > <span class="add-on"><i class="icon-th"></i></span> </div></a>
 
                                                             <?php elseif($field->fieldname =='status'): ?>
+<<<<<<< HEAD
                                                             <select>
                                                                 <option value="0" selected>All</option>
+=======
+                                                            <select name="<?php echo $field->fieldname; ?>" id="<?php echo $field->fieldname; ?>">
+                                                                <option value="all" selected>All</option>
+                                                                <option value="summary">Summary</option>
+>>>>>>> origin/develop
                                                                 <?php foreach(reportStatuses($reporttypeID) as $repstatus): ?>
                                                                 <option value="<?php echo $repstatus->id; ?>"><?php echo $repstatus->id .' '.$repstatus->event; ?></option>
                                                                 <?php endforeach; ?>
@@ -330,18 +349,94 @@ Reports ::
                             $results      = Session::get('results');
 
                             if(@$searchfields['reportType'])
+<<<<<<< HEAD
 
                             $resultfields = reportresultsfields($searchfields['reportType'],$searchfields['status']);
                             ?>
 
                             <?php if(@count($searchfields)): ?>
+=======
+                            {
+                            if(@$searchfields['status']) {$status = @$searchfields['status'];}
+                            else
+                                if(@$searchfields['status_id']) {$status = @$searchfields['status_id'];}
+                                else
+                                { $status = '';}
+
+                            $resultfields = reportresultsfields($searchfields['reportType'],$status);
+                            }
+                            ?>
+
+                            <?php if(@count($searchfields)): ?>
+
+>>>>>>> origin/develop
                             <div class="box-body">
                                 <div class="page-header">
                                     <h3>
                                         <?php echo ucwords($reporttype->searchtype); ?>
                                     </h3>
                                 </div>
+<<<<<<< HEAD
 
+=======
+                            <?php if(@$searchfields['status']=='summary' || @$searchfields['status_id']=='summary'): ?>
+
+                                <!--datatables tools  SUMMARY REPORT-->
+
+                                <div class="row-fluid">
+                                    <div class="span3"></div>
+                                    <div class="span6">
+                                        <div class="box corner-all">
+                                            <div class="box-header grd-white corner-top">
+                                                <div class="header-control">
+
+                                                </div>
+
+                                                <span><?php echo ucwords($reporttype->searchtype).': '.reporttitle($searchfields); ?></span>
+                                            </div>
+                                            <div class="box-body">
+
+                                                <!------------------------------------ Summary Search Report ----------------------------->
+
+                                                <table id="datatablestools" class="table table-hover responsive">
+                                                    <thead>
+                                                    <tr>
+                                                        <?php foreach($resultfields as $field): ?>
+                                                        <th class="<?php echo $field->fieldclass; ?>"><?php echo $field->fielddescription; ?></th>
+                                                        <?php endforeach; ?>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    <?php if(@count($results)): ?>
+                                                    <?php foreach($results as $red): ?>
+                                                    <?php foreach($red as $redemptions): ?>
+                                                    <tr>
+                                                        <?php foreach($resultfields as $resultfield): ?>
+
+                                                        <td><?php echo fieldval($redemptions,$resultfield->fieldname); ?></td>
+
+                                                        <?php endforeach; ?>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                    <?php endforeach; ?>
+                                                    <?php endif; ?>
+
+                                                    </tbody>
+                                                </table>
+
+                                                <!-------------------------------- END Summary Report ----------------------------->
+                                                <!-- ======================================================================== -->
+                                                <!-- ======================================================================== -->
+
+
+                                            </div><!-- /box-body -->
+                                        </div><!-- /box -->
+                                    </div><!-- /span -->
+                                </div><!--/datatables tools-->
+                                <?php else: ?>
+>>>>>>> origin/develop
                             <!--datatables tools-->
 
                                 <div class="row-fluid">
@@ -370,12 +465,21 @@ Reports ::
                                                     <tbody>
 
                                                     <?php if(@count($results)): ?>
+<<<<<<< HEAD
                                                     <?php foreach($results as $red): ?>
                                                     <?php foreach($red as $redemptions): ?>
                                                     <tr>
                                                     <?php foreach($resultfields as $resultfield): ?>
 
                                                         <td><?php echo fieldval($redemptions,$resultfield->fieldname); ?></td>
+=======
+                                                    <?php foreach($results as $res): ?>
+                                                    <?php foreach($res as $values): ?>
+                                                    <tr>
+                                                    <?php foreach($resultfields as $resultfield): ?>
+
+                                                        <td><?php echo fieldval($values,$resultfield->fieldname); ?></td>
+>>>>>>> origin/develop
 
                                                     <?php endforeach; ?>
                                                     </tr>
@@ -396,6 +500,10 @@ Reports ::
                                     </div><!-- /span -->
                                 </div><!--/datatables tools-->
                                 <?php endif; ?>
+<<<<<<< HEAD
+=======
+                                <?php endif; ?>
+>>>>>>> origin/develop
                             </div>
                         </div>
                     </div>

@@ -542,6 +542,10 @@
 
             var merchants = '{{ $merchantlist }}' ;
             var merchantagreements = '{{ $merchantagreementlist }}' ;
+<<<<<<< HEAD
+=======
+            var allcurrencies = '{{ allcurrencies() }}' ;
+>>>>>>> origin/develop
 
 
 
@@ -561,6 +565,25 @@
 
             }
             else
+<<<<<<< HEAD
+=======
+            if($('#searchField').val() === 'currency')
+            {
+
+                addedSearchField = '<select id="'+$('#searchField').val()+'" name="'+$('#searchField').val()+'" data-form="select2" style="width:150px" data-placeholder="Select merchant">';
+
+                addedSearchField += '<option value="all" selected>All</option>';
+                $.each($.parseJSON(allcurrencies), function(x, currency) {
+
+                    addedSearchField += '<option value="'+ currency.currency +'" >'+ currency.currency +'</option>';
+
+                });
+
+                addedSearchField += '</select>';
+
+            }
+            else
+>>>>>>> origin/develop
             if($('#searchField').val() === 'merchantagreement')
             {
                 addedSearchField = '<select id="'+$('#searchField').val()+'" name="'+$('#searchField').val()+'" data-form="select2" style="width:150px" data-placeholder="Select merchantagreement" >';
@@ -616,6 +639,10 @@
                         statuses = '{{ @$validation_statuses}}'; break;
                     }
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
                   if(!reporttypeID || reporttypeID =='select')
                   { alert('Please select a report type before adding fields');}
 
@@ -634,6 +661,10 @@
                 addedSearchField += '</select></td></tr>';
                 }
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/develop
             else
             {
                 var dataValidation = '';
